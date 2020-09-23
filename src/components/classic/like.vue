@@ -29,7 +29,7 @@ export default {
 <style scoped="scoped">
 .like_box{
     position: relative;
-    padding: 0.1rem;
+    padding: 0.1rem 0;
 }
 .like_box>i{
     display: inline-block;
@@ -38,6 +38,7 @@ export default {
     background: url(../../assets/images/like-dis.png);
     background-position: center;
     background-size: contain;
+    background-repeat: no-repeat;
 }
 .like_box>.active{
     display: inline-block;
@@ -46,6 +47,7 @@ export default {
     background: url(../../assets/images/like.png);
     background-position: center;
     background-size: contain;
+    background-repeat: no-repeat;
 }
 .like_box>span{
     position: relative;

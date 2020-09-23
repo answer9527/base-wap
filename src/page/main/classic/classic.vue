@@ -4,10 +4,10 @@
       <v-epsoide :createTime="classicData.createTime"/>
       <v-like :like_count="classicData.like_count" :like_status="classicData.like_status"/>
     </div>
-    <v-music :image="classicData.image" :url="classicData.url" :intro="classicData.intro"/>
-    <!-- <v-movie />
-    <v-essay />
-    <v-navi /> -->
+    <!-- <v-music :image="classicData.image" :url="classicData.url" :intro="classicData.intro"/> -->
+    <v-movie :image="classicData.image"  :intro="classicData.intro"/>
+    <!-- <v-essay /> -->
+    <v-navi :title="classicData.title"/>
   </div>
 </template>
 
@@ -49,6 +49,8 @@ export default {
 
 <style scoped="scoped">
 .classic_header{
-    padding: 0.2rem 0;
+    padding: 0.2rem;
+    border-bottom: 1px solid #f5f5f5;
+
 }
 </style>
