@@ -8,7 +8,7 @@
             </router-link>
         </li>
         <li>
-            <router-link to="/main/home" tag="div" :class="[{'active':active_router=='/main/home'},'flex-y','flex-y-center']">
+            <router-link to="/main/home" tag="div" :class="[{'active':is_home},'flex-y','flex-y-center']">
                 <i></i>
                 <span>发现</span>
             </router-link>
@@ -34,6 +34,11 @@ export default {
   computed:{
       active_router(){
           return this.$route.path
+      },
+      is_home(){
+          let path = this.$route.path
+          let re = /^\/main\/home/
+          return re.test(path)
       }
   }
 };

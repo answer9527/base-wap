@@ -1,9 +1,9 @@
 <template>
   <div class="navi_box_out">
       <div class="navi_box flex-x flex-y-center flex-x-between">
-      <i :class="first?'active_left':'left_icon'"></i>
+      <i :class="latest?'left_icon':'active_left'" @click="previous"></i>
       <span>{{title}}</span>
-      <i :class="latest?'right_icon':'active_right'"></i>
+      <i :class="first?'right_icon':'active_right'" @click="next"></i>
     </div>
   </div>
 </template>
@@ -26,6 +26,22 @@ export default {
     latest:{
       type:Boolean 
     }
+  },
+  methods:{
+      previous(){
+          if(this.latest){
+              return false
+          }else{
+              this.$emit("previous")
+          }
+      },
+      next(){
+          if(this.first){
+              return false
+          }else{
+              this.$emit("next")
+          }
+      }
   }
 }
 </script>

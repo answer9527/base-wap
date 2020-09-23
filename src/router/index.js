@@ -3,6 +3,12 @@ import Router from 'vue-router'
 import Main from "../page/main/main.vue"
 import Classic from "../page/main/classic/classic.vue"
 import Home from "../page/main/home/home.vue"
+import HomeMovie from "../page/main/home/movie.vue"
+import HomeMusic from "../page/main/home/music.vue"
+import HomeEssay from "../page/main/home/essay.vue"
+import HomeVerse from "../page/main/home/verse.vue"
+import HomeStory from "../page/main/home/story.vue"
+import HomeMood from "../page/main/home/mood.vue"
 import My from "../page/main/my/my.vue"
 Vue.use(Router)
 export default new Router({
@@ -20,7 +26,41 @@ export default new Router({
         {
           path:"/main/home",
           name:"Home",
-          component:Home
+          component:Home,
+          children:[
+            {
+              path:"/main/home/movie",
+              name:"HomeMovie",
+              component:HomeMovie
+            },
+            {
+              path:"/main/home/music",
+              name:"HomeMusic",
+              component:HomeMusic
+            },
+            {
+              path:"/main/home/essay",
+              name:"HomeEssay",
+              component:HomeEssay
+            },
+            {
+              path:"/main/home/verse",
+              name:"HomeVerse",
+              component:HomeVerse
+            },
+            {
+              path:"/main/home/story",
+              name:"HomeStory",
+              component:HomeStory
+            },
+            {
+              path:"/main/home/mood",
+              name:"HomeMood",
+              component:HomeMood
+            }
+           
+          ],
+          redirect:"/main/home/movie"
         },
         {
           path:"/main/my",

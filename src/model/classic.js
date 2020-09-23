@@ -21,7 +21,7 @@ class ClassicModel{
 
   // 判断是不是最新的一个
   static isLatest(id){
-    let latest_id = wx.getStorageSync('latest')
+    let latest_id = sessionStorage.getItem('latest')
     return latest_id==id?true:false
   }
 
