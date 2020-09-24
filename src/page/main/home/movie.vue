@@ -1,6 +1,6 @@
 <template>
   <div>
-      <v-movieListOne v-for="(item,index) in classic_list" :key="index" :image="item.image" :author="item.author" :title="item.title" :intro="item.intro"/>
+      <v-movieListOne v-for="(item,index) in classic_list" :key="index" :classic_id="item.id" :image="item.image" :author="item.author" :title="item.title" :intro="item.intro"/>
   </div>
 </template>
 

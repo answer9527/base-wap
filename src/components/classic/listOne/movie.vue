@@ -1,11 +1,11 @@
 <template>
-  <div class="classic_list_one flex-x">
+  <router-link :to="'/other/classic/detail/'+classic_id" tag="div" class="classic_list_one flex-x">
       <div class="classic_image" :style="{'backgroundImage':'url('+image+')','backgroundSize':'cover','backgroundPosition':'center'}"></div>
       <div class="one_right flex-y flex-x-around">
           <div class="intro">{{intro}}</div>
-          <div class="title">{{title}}|{{author}}</div>
+          <div class="title">{{title}} | {{author}}</div>
       </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -58,5 +58,6 @@ export default {
 }
 .title{
     font-size: 0.2rem;
+    color: #cccccc;
 }
 </style>

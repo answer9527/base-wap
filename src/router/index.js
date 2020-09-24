@@ -10,6 +10,8 @@ import HomeVerse from "../page/main/home/verse.vue"
 import HomeStory from "../page/main/home/story.vue"
 import HomeMood from "../page/main/home/mood.vue"
 import My from "../page/main/my/my.vue"
+import Other from "../page/other/other.vue"
+import ClassicDetail from "../page/other/classic/detail.vue"
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -69,6 +71,19 @@ export default new Router({
         }
       ],
       redirect:"/main/classic"
+    },
+    {
+      path:"/other",
+      name:'Other',
+      component:Other,
+      children:[
+        {
+          // 传入参数
+          path:"/other/classic/detail/:id",
+          name:"ClassicDetail",
+          component:ClassicDetail
+        }
+      ]
     }
   ]
 })
