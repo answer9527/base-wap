@@ -1,7 +1,10 @@
 <template>
   <div>
-      <div>other</div>
-      <router-view></router-view>
+      <div class="other_header flex-x flex-x-center">
+          <span class="back_icon" @click="go_back"><</span>
+          <div>陈湖旧事</div>
+      </div>
+      <router-view class="other_content"></router-view>
   </div>
 </template>
 
@@ -23,12 +26,30 @@ export default {
 
     },
     methods:{
-
+        go_back(){
+            this.$router.go(-1)
+        }
     }
     
 }
 </script>
 
-<style>
+<style scoped="scoped">
+.other_header{
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    background: #FFFFFF;
+    width: 100%;
+    padding: 0.2rem;
 
+}
+.back_icon{
+    position: absolute;
+    left: 0;
+    margin-left: 0.4rem;
+}
+.other_content{
+    padding-top: 0.4rem;
+}
 </style>

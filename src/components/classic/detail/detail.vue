@@ -3,7 +3,7 @@
       <div class="first_row flex-x flex-x-between">
           <div class="first_left">
               <div class="detail_title">{{title}}</div>
-              <div class="detail_author"> —— {{author}}</div>
+              <div class="detail_author"> —— {{author||'未知'}}</div>
           </div>
           <div class="first_right"></div>
       </div>

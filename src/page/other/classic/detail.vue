@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <v-comment-write :placeholder="'请输入您的点评'"/>
+    <v-comment-write :placeholder="'请输入您的点评！'"/>
   </div>
 </template>
 
@@ -80,5 +80,21 @@ export default {
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   padding: 0.3rem;
+}
+.comment_nav{
+  font-size: 0.32rem;
+  font-weight: bold;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 0.3rem;
+
+}
+.comment_nav::before{
+    content: " ";
+    padding:0 0.08rem;
+    margin-right: 0.2rem;
+    border-radius: 0.1rem;
+    background: #FF8375;
+    
 }
 </style>

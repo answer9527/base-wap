@@ -29,7 +29,8 @@ export default {
 <style scoped="scoped">
 .app-header{
     text-align: center;
-    padding: 0.44rem 0;
+    padding: 0.2rem 0;
     border-bottom: 1px solid #F5F5F5;
+    
 }
 </style>

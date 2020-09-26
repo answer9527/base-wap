@@ -3,7 +3,7 @@
       <div class="classic_image" :style="{'backgroundImage':'url('+image+')','backgroundSize':'cover','backgroundPosition':'center'}"></div>
       <div class="one_right flex-y flex-x-around">
           <div class="intro">{{intro}}</div>
-          <div class="title">{{title}} | {{author}}</div>
+          <div class="title">{{title}} | {{author||'未知'}}</div>
       </div>
   </router-link>
 </template>

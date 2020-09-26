@@ -21,6 +21,10 @@ Vue.component("v-comment-write",CommentBox)
 
 Vue.config.productionTip = false
 
+if (sessionStorage.getItem('token')) {
+  store.commit('SET_TOKEN', sessionStorage.getItem('token'))
+}
+
 axios.interceptors.request.use(
   config => {
 

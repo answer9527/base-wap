@@ -10,7 +10,15 @@ const reduce_classic_flag = ({commit})=>{
 const push_classic = ({commit},classic)=>{
     commit("PUSH_CLASSIC",classic)
 }
+const set_token = ({commit},token)=>{
+    commit('SET_TOKEN',token)
+}
+
 
 export{
-    set_latest,add_classic_flag,reduce_classic_flag,push_classic
+    set_latest,
+    add_classic_flag,
+    reduce_classic_flag,
+    push_classic,
+    set_token
 }

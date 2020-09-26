@@ -5,7 +5,7 @@
               <div class="avatar" :style="{'backgroundImage':'url('+userAvatar+')','backgroundSize':'contain','backgroundPosition':'center'}"></div>
               <div class="root_center">
                   <div class="nickname">{{userName}}</div>
-                  <div class="createTime">{{createTime}}</div>
+                  <div class="createTime">{{$common.formatTime(createTime)}}</div>
               </div>
           </div>
           <div class="root_right">删除</div>
@@ -100,14 +100,16 @@ export default {
 .comment_content{
   padding: 0.1rem;
   font-size:0.28rem;
-  border-bottom: 1px dashed #cccccc;
+  /* border-bottom: 1px dashed #cccccc; */
 }
 
 .child_comment_list{
     padding-left: 0.4rem;
+    
 }
 .child_comment_row:nth-child(1){
     padding-top:0.3rem ;
+    border-top: 1px dashed #cccccc;
 
 }
 .child_comment_row>.child_right{

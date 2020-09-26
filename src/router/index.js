@@ -12,6 +12,8 @@ import HomeMood from "../page/main/home/mood.vue"
 import My from "../page/main/my/my.vue"
 import Other from "../page/other/other.vue"
 import ClassicDetail from "../page/other/classic/detail.vue"
+
+import Login from "../page/user/login.vue"
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -84,6 +86,11 @@ export default new Router({
           component:ClassicDetail
         }
       ]
+    },
+    {
+      path:"/login",
+      name:'Login',
+      component:Login
     }
   ]
 })
