@@ -15,6 +15,7 @@
         </div>
       </div>
     </div>
+    <v-comment-write :placeholder="'请输入您的点评'"/>
   </div>
 </template>
 

@@ -14,10 +14,16 @@ export default {
         }
     },
     created(){
+         const alert = this.$alert({
+          title: "测试",
+          message: "请求登录!",
+          duration: 3000
+        });
+        // alert.show();
 
     },
     methods:{
-        
+
     }
     
 }

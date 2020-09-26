@@ -9,29 +9,17 @@
 </template>
 
 <script>
+import {classic_mixins} from "./classic_mixins"
 export default {
     name:"movieListOne",
+    mixins:[classic_mixins],
     data(){
         return{
 
         }
     },
-    props:{
-        image:{
-            type:String
-        },
-        title:{
-            type:String
-        },
-        intro:{
-            type:String
-        },
-        author:{
-            type:String
-        },
-        classic_id:{
-            type:Number
-        }
+    created(){
+        
     }
 }
 </script>

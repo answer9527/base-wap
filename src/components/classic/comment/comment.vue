@@ -23,7 +23,10 @@
                     <div class="nickName replay_color">{{item.userName_r}} : </div>
                     <div class="childContent">{{item.content}}</div>
                   </div>
-                  <div class="right_bottom"></div>
+                  <div class="right_bottom flex-x flex-x-between">
+                      <div>{{$common.formatTime(item.createTime)}}</div>
+                      <div>删除</div>
+                  </div>
               </div>
           </div>
       </div>
@@ -56,7 +59,7 @@ export default {
         }
     },
     created(){
-
+        
     }
 }
 </script>
@@ -97,15 +100,27 @@ export default {
 .comment_content{
   padding: 0.1rem;
   font-size:0.28rem;
+  border-bottom: 1px dashed #cccccc;
 }
 
 .child_comment_list{
     padding-left: 0.4rem;
 }
+.child_comment_row:nth-child(1){
+    padding-top:0.3rem ;
 
+}
 .child_comment_row>.child_right{
+
     padding: 0 0.12rem;
     flex: 1;
+}
+.child_right>.right_bottom{
+    padding: 0.1rem 0;
+   
+}
+.right_bottom>div{
+ font-size: 0.24rem;
 }
 .replay_color{
     color: #295C9D; 
