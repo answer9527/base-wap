@@ -9,6 +9,7 @@ Vue.use(Vuex)
 const state = {
     token:"",
     userInfo:{},
+    uid:0,
     latest:0,
     classic_flag:-1,
     classic_list:[]

@@ -2,7 +2,7 @@
   <div>
     <div class="classic_header flex-x flex-x-between flex-y-center">
       <v-epsoide :createTime="classicData.createTime"/>
-      <v-like :like_count="classicData.like_count" :like_status="classicData.like_status"/>
+      <v-like :like_count="classicData.like_count" :like_status="classicData.like_status" @likeOrUnlike="likeOrUnlike"/>
     </div>
     <v-movie :image="classicData.image"  :intro="classicData.intro" v-if="classicData.type==100"/>
     <v-music :image="classicData.image" :url="classicData.url" :intro="classicData.intro" v-else-if="classicData.type==200"/>
@@ -19,7 +19,7 @@ import Music from "@/components/classic/music";
 import Movie from "@/components/classic/movie";
 import Essay from "@/components/classic/essay";
 import Navi from "@/components/classic/navi";
-import {mapActions} from "vuex"
+import {mapActions,mapState} from "vuex"
 export default {
   name: "Classic",
   data() {
@@ -32,7 +32,8 @@ export default {
           get(){
               return this.$store.state.latest == this.classicData.id
           }
-      }
+      },
+      ...mapState(['classic_list','classic_flag'])
   },
   components: {
     "v-epsoide": Epsoide,
@@ -43,7 +44,7 @@ export default {
     "v-navi": Navi,
   },
   methods: {
-      ...mapActions(['set_latest','add_classic_flag','reduce_classic_flag','push_classic']),
+      ...mapActions(['set_latest','add_classic_flag','reduce_classic_flag','push_classic','update_classic']),
     // 获取最新的推荐
     get_latest_classic() {
       ClassicModel.getLatest({}).then((res) => {
@@ -56,11 +57,11 @@ export default {
     // 获取上一条推荐
     previous(){
        this.reduce_classic_flag()
-       this.classicData = this.$store.state.classic_list[this.$store.state.classic_flag]
+       this.classicData = this.classic_list[this.classic_flag]
     },
     // 获取下一条推荐
     next(){
-        if(this.$store.state.classic_list[this.$store.state.classic_list.length-1].id == this.classicData.id){
+        if(this.classic_list[this.classic_list.length-1].id == this.classicData.id){
             ClassicModel.getClassicRecommend(this.classicData.id,"previous").then(res=>{
                 this.add_classic_flag()
                 this.classicData= res.data
@@ -68,8 +69,21 @@ export default {
             })
         }else{
             this.add_classic_flag()
-            this.classicData = this.$store.state.classic_list[this.$store.state.classic_flag]
+            this.classicData = this.classic_list[this.classic_flag]
         }
+    },
+    // 设置喜欢或取消喜欢
+    likeOrUnlike(e){
+      let behavior = e.behavior
+      let cid = this.classicData.id
+      ClassicModel.likeIt(behavior,cid).then(res=>{
+        if(behavior=='setLike'){
+          this.classicData.like_count ++
+        }else{
+          this.classicData.like_count --
+        }
+        this.classicData.like_status = !this.classicData.like_status
+      })
     }
   },
   created() {

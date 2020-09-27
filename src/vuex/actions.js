@@ -10,8 +10,15 @@ const reduce_classic_flag = ({commit})=>{
 const push_classic = ({commit},classic)=>{
     commit("PUSH_CLASSIC",classic)
 }
+// 更新classic  暂未使用到
+const update_classic = ({commit},classic)=>{
+    commit('UPDATE_CLASSIC',classic)
+}
 const set_token = ({commit},token)=>{
     commit('SET_TOKEN',token)
+}
+const set_uid = ({commit},uid)=>{
+    commit('SET_UID',uid)
 }
 
 
@@ -20,5 +27,7 @@ export{
     add_classic_flag,
     reduce_classic_flag,
     push_classic,
-    set_token
+    update_classic,
+    set_token,
+    set_uid
 }

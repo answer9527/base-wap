@@ -1,5 +1,5 @@
 <template>
-  <div class="like_box">
+  <div class="like_box" @click="likeOrUnlike">
       <i :class="{'active':like_status}"></i>
       <span>{{like_count}}</span>
   </div>
@@ -21,6 +21,12 @@ export default {
         like_status:{
             type:Boolean,
             default:false
+        }
+    },
+    methods:{
+        likeOrUnlike(){
+            let behavior = this.like_status?"cancelLike":"setLike"
+            this.$emit("likeOrUnlike",{behavior})
         }
     }
 }

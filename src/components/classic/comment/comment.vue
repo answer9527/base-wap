@@ -8,7 +8,8 @@
                   <div class="createTime">{{$common.formatTime(createTime)}}</div>
               </div>
           </div>
-          <div class="root_right">删除</div>
+          <div class="root_right del_color" v-if="commentUid==uid" @click="del_comment(commentId)">删除</div>
+          <div class="root_right replay_color" v-else @click="open_input({'userName':userName,'pid':commentId,'uid_r':commentUid})">回复</div>
       </div>
       <div class="comment_content">
           {{content}}
@@ -25,7 +26,8 @@
                   </div>
                   <div class="right_bottom flex-x flex-x-between">
                       <div>{{$common.formatTime(item.createTime)}}</div>
-                      <div>删除</div>
+                      <div  class="del_color" v-if="item.uid==uid" @click="del_comment(item.id)">删除</div>
+                      <div class="root_right replay_color" v-else @click="open_input({'userName':item.userName,'pid':commentId,'uid_r':item.uid})">回复</div>
                   </div>
               </div>
           </div>
@@ -34,14 +36,25 @@
 </template>
 
 <script>
+import {mapState} from "vuex"
 export default {
     name:"ClassicComment",
     data(){
         return{
-
+            
         }
     },
+    computed:{
+        ...mapState(['uid'])
+    },
     props:{
+
+        commentId:{
+            type:Number
+        },
+        commentUid:{
+            type:Number
+        },
         userAvatar:{
             type:String
         },
@@ -60,6 +73,23 @@ export default {
     },
     created(){
         
+    },
+    methods:{
+        // 打开回复的弹出框
+        open_input(data){
+            let params = {
+                "userName":data.userName,
+                "pid":data.pid,
+                'uid_r':data.uid_r
+            }
+            this.$emit("open_input",params)
+        },
+        del_comment(commentId){
+            let params = {
+                "id":commentId
+            }
+            this.$emit("del_comment",params)
+        }
     }
 }
 </script>
@@ -126,5 +156,8 @@ export default {
 }
 .replay_color{
     color: #295C9D; 
+}
+.del_color{
+    color: #F4516C;
 }
 </style>

@@ -9,20 +9,23 @@
         <textarea rows="9" :placeholder="textarea_pla" v-model="text_val"></textarea>
     </div>
     <div class="flex-x flex-y-center flex-x-around">
-      <div class="input_bar" @click="openText">{{placeholder}}</div>
-      <Like />
+      <div class="input_bar" @click="open_root_comment_input">{{placeholder}}</div>
+      <slot name="like">
+          <span></span>
+      </slot>
     </div>
   </div>
 </template>
 
 <script>
-import Like from "../../../components/classic/like";
 export default {
   name: "CommentBox",
   data() {
     return {
       height: 0,
-      text_val:""
+      text_val:"",
+      // 是点评还是回复   true为点评
+      isRoot:true
     };
   },
   computed: {
@@ -43,23 +46,38 @@ export default {
     textarea_pla:{
         type: String,
         default:"文明发言，理性讨论！"
-    }
-  },
-  components: {
-    Like,
+    },
   },
   methods: {
-    openText() {
+    // 打开主动输入的点评框
+    open_root_comment_input() {
+      this.$emit("resetTextPla")
+      this.isRoot = true
       this.height = "4.6rem";
     },
+     open_reply_comment_input() {
+     
+      this.isRoot = false
+      this.height = "4.6rem";
+    },
+    // 关闭输入框
     closeText() {
       this.height = 0;
     },
     send_text(){
-        if(this.text_val.length>5){
-            alert("成功")
-            this.text_val=""
-            this.closeText()
+        if(this.text_val.length>=3){
+            let params ={
+              "content":this.text_val
+            }
+          if(this.isRoot){
+
+            this.$emit("root_comment",params)
+
+          }else{
+            this.$emit("reply_comment",params)
+          }
+          this.text_val=""
+          this.closeText()
         }else{
             alert("您的评论过短")
         }

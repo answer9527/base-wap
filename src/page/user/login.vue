@@ -36,7 +36,7 @@ export default {
         console.log(this.token)
     },
     methods:{
-        ...mapActions(['set_token']),
+        ...mapActions(['set_token','set_uid']),
         login(){
            
             let params = {
@@ -44,9 +44,10 @@ export default {
                 password:this.password
             }
             UserModel.login(params).then(res=>{
-                console.log(res)
                 let token  =res.data.token
+                let uid = res.data.uid
                 this.set_token(token)
+                this.set_uid(uid)
             })
         }
     }
