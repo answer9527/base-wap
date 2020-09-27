@@ -1,20 +1,40 @@
 <template>
   <div>
-      <v-essayListOne/>
+      <v-essayListOne v-for="(item,index) in classic_list" :key="index" :classic_id="item.id" :image="item.image" :author="item.author" :title="item.title" :intro="item.intro"/>
   </div>
 </template>
 
 <script>
 import EssayListOne from "@/components/classic/listOne/essay.vue"
+import {ClassicModel} from "@/model/classic"
 export default {
     name:"essayList",
     data(){
         return{
-
+            key:"400",
+            size:10,
+            page:1,
+            classic_list:[]
         }
     },
     components:{
         "v-essayListOne":EssayListOne
+    },
+    created(){
+        this.get_classic_by_type()
+    },
+    methods:{
+        get_classic_by_type(){
+            let params  = {
+                "key":this.key,
+                "page":this.page,
+                "size":this.size
+            }
+            ClassicModel.getByListType(params).then(res=>{
+                let temp = res.data.list
+                this.classic_list = this.classic_list.concat(temp)
+            })
+        }
     }
 }
 </script>

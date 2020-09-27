@@ -72,10 +72,10 @@ export default {
   font-size: 0.28rem;
 }
 .detail_intro{
-     padding: 0.5rem 0 0.2rem 0;
+    padding: 0.5rem 0 0.2rem 0;
     border-top: 1px solid #cccccc;
     display: flex;
-    flex-direction: row;
+    flex-direction:row;
     justify-content: center;
 }
 

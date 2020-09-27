@@ -1,15 +1,6 @@
 <template>
     <div>
-        <div>
-            <ul class="flex-x flex-x-around">
-                <router-link to="/main/home/movie" tag="li">电影</router-link>
-                <router-link to="/main/home/music" tag="li">音乐</router-link>
-                <router-link to="/main/home/essay" tag="li">诗句</router-link>
-                <router-link to="/main/home/verse" tag="li">文章</router-link>
-                <router-link to="/main/home/story" tag="li">故事</router-link>
-                <router-link to="/main/home/mood" tag="li">随记</router-link>
-            </ul>
-        </div>
+        <v-classic-nav/>
         <div>
             <router-view></router-view>
         </div>
@@ -17,16 +8,22 @@
 </template>
 
 <script>
+import ClassicNav from "@/components/classic/classicNav.vue"
 export default {
     name:"MainHome",
     data(){
         return{
             
         }
+    },
+    components:{
+        'v-classic-nav':ClassicNav
     }
 }
 </script>
 
-<style>
-
+<style scoped="scoped">
+.classic_nav{
+    padding: 0.2rem 0;
+}
 </style>
