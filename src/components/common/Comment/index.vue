@@ -6,7 +6,7 @@
             <span @click="closeText">取消</span>
             <span @click="send_text">发送</span>
         </div>
-        <textarea rows="9" :placeholder="textarea_pla" v-model="text_val"></textarea>
+        <textarea rows="7" :placeholder="textarea_pla" v-model="text_val"></textarea>
     </div>
     <div class="flex-x flex-y-center flex-x-around">
       <div class="input_bar" @click="open_root_comment_input">{{placeholder}}</div>

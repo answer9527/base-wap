@@ -33,13 +33,18 @@ export default {
     position: fixed;
     top: 0;
     width: 100%;
-    height:0.8rem;
-    line-height: 0.8rem;
-    background: #FFFFFF;
+    height:1rem;
+    line-height: 1rem;
     box-sizing: border-box;
+    /* background: #FFFFFF; */
+    /* background: #2B4ADC;
+    color: #FFFFFF; */
+    font-family: 黑体;
+    font-size: 0.32rem;
+    letter-spacing: 6px;
     
 }
 .app-content{
-    padding: 0.8rem 0 1rem 0;
+    padding: 1rem 0 1rem 0;
 }
 </style>

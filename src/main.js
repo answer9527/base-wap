@@ -32,7 +32,7 @@ if (sessionStorage.getItem('uid')) {
   store.commit('SET_UID', sessionStorage.getItem('uid'))
 }
 
-
+// 请求拦截器
 axios.interceptors.request.use(
   config => {
     let token=store.state.token
@@ -47,6 +47,18 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+// 响应拦截器
+
+axios.interceptors.response.use(function (response) {
+  return response;
+}, function (error) {
+  let code = error.response.data.code
+  if(code==40001||code==40002){
+    alert("您暂未登录或权限已过期")
+    router.push("/login")
+  }
+  return Promise.reject(error);
+});
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

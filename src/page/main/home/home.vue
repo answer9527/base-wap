@@ -25,7 +25,7 @@ export default {
 <style scoped="scoped">
 .top_nav{
     position: fixed;
-    top: 0.8rem;
+    top: 1rem;
     width: 100%;
 }
 .classic_list{

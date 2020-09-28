@@ -27,6 +27,7 @@ export default {
     },
     methods:{
         go_back(){
+           
             this.$router.go(-1)
         }
     }
@@ -41,10 +42,16 @@ export default {
     z-index: 9999;
     background: #FFFFFF;
     width: 100%;
-    height: 0.8rem;
-    line-height: 0.8rem;
+    height: 1rem;
+    line-height: 1rem;
     box-sizing: border-box;
+   
 
+}
+.other_header>div{
+    font-family: 黑体;
+    font-size: 0.32rem;
+    letter-spacing: 6px;
 }
 .back_icon{
     position: absolute;
@@ -53,6 +60,6 @@ export default {
     transform: scale(1.25,2);
 }
 .other_content{
-    padding-top: 0.4rem;
+    padding-top: 1rem;
 }
 </style>

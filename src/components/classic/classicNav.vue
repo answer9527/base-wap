@@ -32,9 +32,9 @@ export default {
     padding: 0 0.2rem;
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid #F3F3F3;
+    /* border-bottom: 1px solid #F3F3F3; */
     background: #FFFFFF;
-    z-index: 99999999;
+    z-index: 9999;
 }
 .classic_nav>li{
     flex: 1;
@@ -44,5 +44,7 @@ export default {
 }
 .classic_nav>.active{
     border-bottom: 2px solid #333333;
+    font-weight: bold;
+    font-size: 0.32rem;
 }
 </style>
