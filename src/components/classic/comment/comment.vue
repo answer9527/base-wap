@@ -84,6 +84,7 @@ export default {
             }
             this.$emit("open_input",params)
         },
+        // 删除评论
         del_comment(commentId){
             let params = {
                 "id":commentId

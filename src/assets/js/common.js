@@ -1,4 +1,4 @@
-// import Vue from "vue"
+import Vue from "vue"
 
 const formatTime=function(time_str,str="-",type=1){
     var time = new Date(time_str);
@@ -34,7 +34,7 @@ const formatTime=function(time_str,str="-",type=1){
 
 
 export default{
-    install(Vue){
+    install(){
         Vue.prototype.$common ={
             formatTime
         }

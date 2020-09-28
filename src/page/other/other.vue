@@ -41,13 +41,16 @@ export default {
     z-index: 9999;
     background: #FFFFFF;
     width: 100%;
-    padding: 0.2rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    box-sizing: border-box;
 
 }
 .back_icon{
     position: absolute;
     left: 0;
     margin-left: 0.4rem;
+    transform: scale(1.25,2);
 }
 .other_content{
     padding-top: 0.4rem;

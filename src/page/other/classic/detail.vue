@@ -34,7 +34,7 @@
       </div>
 
     </div>
-    <v-comment-write :placeholder="'请输入您的点评！'" :textarea_pla="textarea_pla" ref="commentWrite" @resetTextPla="resetTextPla" @root_comment="root_comment" @reply_comment="reply_comment">
+    <v-comment-write placeholder="请输入您的点评！" :textarea_pla="textarea_pla" ref="commentWrite" @resetTextPla="resetTextPla" @root_comment="root_comment" @reply_comment="reply_comment">
         <v-like slot="like" :like_count="classic_detail.like_count" :like_status="classic_detail.like_status" @likeOrUnlike="likeOrUnlike"/>
     </v-comment-write>
   </div>

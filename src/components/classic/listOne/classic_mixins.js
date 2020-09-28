@@ -19,6 +19,9 @@ export const classic_mixins = {
         },
         classic_id:{
             type:Number
+        },
+        createTime:{
+            type:String
         }
     },
     methods:{

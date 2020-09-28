@@ -1,7 +1,7 @@
 <template>
     <div>
-        <v-classic-nav/>
-        <div>
+        <v-classic-nav class="top_nav"/>
+        <div class="classic_list">
             <router-view></router-view>
         </div>
     </div>
@@ -23,7 +23,12 @@ export default {
 </script>
 
 <style scoped="scoped">
-.classic_nav{
-    padding: 0.2rem 0;
+.top_nav{
+    position: fixed;
+    top: 0.8rem;
+    width: 100%;
+}
+.classic_list{
+    padding-top: 0.84rem;
 }
 </style>

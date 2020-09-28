@@ -6,35 +6,17 @@
 
 <script>
 import VerseListOne from "@/components/classic/listOne/verse.vue"
-import {ClassicModel} from "@/model/classic"
+import {home_mixins} from "./home_mixins"
 export default {
     name:"verseList",
+    mixins:[home_mixins],
     data(){
         return{
-            key:"300",
-            size:10,
-            page:1,
-            classic_list:[]
+            key:"300"
         }
     },
     components:{
         "v-verseListOne":VerseListOne
-    },    
-    created(){
-        this.get_classic_by_type()
-    },
-    methods:{
-        get_classic_by_type(){
-            let params  = {
-                "key":this.key,
-                "page":this.page,
-                "size":this.size
-            }
-            ClassicModel.getByListType(params).then(res=>{
-                let temp = res.data.list
-                this.classic_list = this.classic_list.concat(temp)
-            })
-        }
     }
 }
 </script>

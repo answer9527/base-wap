@@ -51,6 +51,7 @@ export default {
     width: 100%;
     border-top:1px solid #D5D5D5 ;
     padding: 0.08rem 0;
+    background: #FFFFFF;
 }
 .nav_bar>ul>li>div>i{
     display: inline-block;
