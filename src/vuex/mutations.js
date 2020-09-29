@@ -28,9 +28,17 @@ const mutations ={
         state.token = token
         sessionStorage.setItem("token",token)
     },
+    // 缓存uid
     SET_UID(state,uid){
         state.uid = uid
         sessionStorage.setItem("uid",uid)
+    },
+    // 清除uid和清除token
+    DEL_TOKEN_USERINFO(state){
+        state.token = ""
+        state.uid = 0
+        sessionStorage.removeItem("token")
+        sessionStorage.removeItem("uid")
     }
 }
 export{

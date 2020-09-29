@@ -27,8 +27,7 @@ export default {
         likeOrUnlike(){
             let behavior = this.like_status?"cancelLike":"setLike"
             this.$emit("likeOrUnlike",{behavior})
-        },
-        test
+        }
     }
 }
 </script>

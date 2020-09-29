@@ -21,6 +21,10 @@ const set_uid = ({commit},uid)=>{
     commit('SET_UID',uid)
 }
 
+const del_token_userinfo=({commit})=>{
+    commit('DEL_TOKEN_USERINFO')
+}
+
 
 export{
     set_latest,
@@ -29,5 +33,6 @@ export{
     push_classic,
     update_classic,
     set_token,
-    set_uid
+    set_uid,
+    del_token_userinfo
 }

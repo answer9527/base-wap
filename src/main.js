@@ -47,15 +47,20 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-// 响应拦截器
 
+// 响应拦截器
 axios.interceptors.response.use(function (response) {
   return response;
 }, function (error) {
   let code = error.response.data.code
-  if(code==40001||code==40002){
-    alert("您暂未登录或权限已过期")
-    router.push("/login")
+
+  // 4000开头的为token异常
+  let re =/^4000/
+  if(re.test(code)){
+    alert(error.response.data.message)
+    router.push({path:"/login",replace:true})
+  }else if(code!=0){
+    alert(error.response.data.message)
   }
   return Promise.reject(error);
 });

@@ -26,8 +26,8 @@ export default {
 
     },
     methods:{
+        // 返回按钮
         go_back(){
-           
             this.$router.go(-1)
         }
     }

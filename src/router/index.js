@@ -14,6 +14,7 @@ import Other from "../page/other/other.vue"
 import ClassicDetail from "../page/other/classic/detail.vue"
 
 import Login from "../page/user/login.vue"
+import Register from "../page/user/register.vue"
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -91,6 +92,11 @@ export default new Router({
       path:"/login",
       name:'Login',
       component:Login
+    },
+    {
+      path:"/register",
+      name:"Register",
+      component:Register
     }
   ]
 })

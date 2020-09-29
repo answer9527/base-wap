@@ -87,7 +87,13 @@ export default {
     }
   },
   created() {
-    this.get_latest_classic();
+    // 当vuex中不存在推荐页的classic时候就加载  否则读vuex存的内容
+    if(this.classic_list.length>0){
+      this.classicData = this.classic_list[this.classic_flag]
+    }else{
+      this.get_latest_classic();
+    }
+    
   },
 
 };

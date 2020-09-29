@@ -1,7 +1,7 @@
 <template>
   <div class="login_page">
       <div class="top_bg">
-        <!-- <span class="logo"></span> -->
+        <span class="logo"></span>
         <div class="sys-name">陈湖旧事欢迎您</div>
       </div>
       <div class="ware"></div>
@@ -18,7 +18,7 @@
           </div>
           <div class="login_btn" @click="login">立即登录</div>
           <div class="register_btn">
-              还没有账号？ <router-link tag="span" to="/register">立即注册</router-link>
+              还没有账号？ <span @click="()=>this.$router.replace('/register')">立即注册</span>
           </div>
       </div>
   </div>
@@ -31,14 +31,15 @@ export default {
     name:"login",
     data(){
         return{
-            account:"516994147@qq.com",
-            password:"q123456",
+            account:"",
+            password:"",
             before_route:"",
             
         }
     },
     created(){
-
+        // 清除登录态
+        this.del_token_userinfo()
     },
     beforeRouteEnter(to, from, next){
         next(vm=>{
@@ -46,7 +47,7 @@ export default {
         })
     },
     methods:{
-       ...mapActions(["set_token",'set_uid']),
+       ...mapActions(["set_token",'set_uid','del_token_userinfo']),
        login(){
             let params = {
                 "loginType":1,
@@ -59,14 +60,14 @@ export default {
                 let uid = res.data.uid
                 this.set_uid(uid)
                 if(this.before_route=="/register"){
-                    this.$router.push("/")
+
+                    // 如果是从register跳进来的,则从浏览器的history跳回上一个
+                    this.$router.go(-1)
                 }else{
-                     this.$router.push("/")
-                    // this.$router.push(this.before_route)
+
+                    // 使用replace 可以不向history中加入login的路由记录  所有后退不会退到这里
+                    this.$router.replace(this.before_route)
                 }
-                console.log(res)
-                
-                
             })
        },
 
@@ -93,9 +94,9 @@ export default {
     display: inline-block;
     width: 1.4rem;
     height: 1.4rem;
-    background: url(../../assets/images/logo.svg);
+    background: url(../../assets/images/logo.png);
     background-size: cover;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 }
 .sys-name{
     color: #FFFFFF;
