@@ -2,7 +2,7 @@
   <div class="flex-x">
     <div class="index-container">
         <span class="plain">No.</span>
-        <span class="index">{{day|add0}}</span>
+        <span class="index">{{day}}</span>
         <div class="line"></div>
     </div>
     <div class="data-container">
@@ -17,14 +17,23 @@ export default {
     name:"epsoide",
     data(){
         return{
-            year:"",
-            month:"",
-            day:""
+            // year:"",
+            // month:"",
+            // day:""
         }
     },
     props:{
         createTime:{
             type:String
+        },
+        year:{
+          type:Number
+        },
+        month:{
+          type:String
+        },
+        day:{
+          type:Number
         }
     },
     created(){
@@ -34,22 +43,13 @@ export default {
 
     },
     watch:{
-        createTime(newVal,oldVal){           
-            let time = new Date(newVal)
-            this.year = time.getFullYear()
-            const mon = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
-            this.month = mon[time.getMonth()]
-            this.day = time.getDate()
-        }
-    },
-    filters:{
-        add0(val){
-            if(val<10){
-                return "0"+val
-            }else{
-                return val
-            }
-        }
+        // createTime(newVal,oldVal){           
+        //     let time = new Date(newVal)
+        //     this.year = time.getFullYear()
+        //     const mon = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
+        //     this.month = mon[time.getMonth()]
+        //     this.day = time.getDate()
+        // }
     }
 }
 </script>

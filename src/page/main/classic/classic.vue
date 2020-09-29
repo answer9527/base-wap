@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="classic_header flex-x flex-x-between flex-y-center">
-      <v-epsoide :createTime="classicData.createTime"/>
+      <v-epsoide 
+        :createTime="classicData.createTime" 
+        :year="formatYear(classicData.createTime)" 
+        :month="formatMonth(classicData.createTime)"
+        :day="formatDay(classicData.createTime)"
+        />
       <v-like :like_count="classicData.like_count" :like_status="classicData.like_status" @likeOrUnlike="likeOrUnlike"/>
     </div>
     <v-movie :image="classicData.image"  :intro="classicData.intro" v-if="classicData.type==100"/>
@@ -84,7 +89,28 @@ export default {
         }
         this.classicData.like_status = !this.classicData.like_status
       })
+    },
+    formatYear(t){
+       let time = new Date(t)
+       return time.getFullYear()
+    },
+    formatMonth(t){
+      let time = new Date(t)
+      const mon = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
+      return mon[time.getMonth()]
+    },
+    formatDay(t){
+      let time = new Date(t)
+      return this.add0(time.getDate())
+    },
+    add0(val){
+      if(val<10){
+          return "0"+val
+      }else{
+          return val
+      }
     }
+
   },
   created() {
     // 当vuex中不存在推荐页的classic时候就加载  否则读vuex存的内容

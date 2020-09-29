@@ -27,6 +27,7 @@ export default {
     position: fixed;
     top: 1rem;
     width: 100%;
+    z-index: 2;
 }
 .classic_list{
     padding-top: 0.84rem;

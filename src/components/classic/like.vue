@@ -36,7 +36,7 @@ export default {
 .like_box{
     position: relative;
     padding: 0.1rem 0;
-    z-index:1;
+    z-index:0;
 }
 .like_box>i{
     display: inline-block;

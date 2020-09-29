@@ -34,7 +34,7 @@ export default {
     flex-direction: row;
     /* border-bottom: 1px solid #F3F3F3; */
     background: #FFFFFF;
-    z-index: 9999;
+ 
 }
 .classic_nav>li{
     flex: 1;

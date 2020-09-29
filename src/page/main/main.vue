@@ -39,12 +39,13 @@ export default {
     height:1rem;
     line-height: 1rem;
     box-sizing: border-box;
-    /* background: #FFFFFF; */
+    background: #FFFFFF;
     /* background: #2B4ADC;
     color: #FFFFFF; */
     font-family: 黑体;
     font-size: 0.32rem;
     letter-spacing: 6px;
+    z-index: 2;
     
 }
 .app-logo{
