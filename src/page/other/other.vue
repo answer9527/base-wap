@@ -1,8 +1,8 @@
 <template>
-  <div>
-      <div class="other_header flex-x flex-x-center">
-          <span class="back_icon" @click="go_back"><</span>
-          <div>陈湖旧事</div>
+  <div class="other_page">
+      <div class="other_header flex-x flex-x-center" :style="{'background':bg}">
+          <span class="back_icon" @click="go_back" :style="{'color':color}"><</span>
+          <div :style="{'color':color}">{{nav_name}}</div>
       </div>
       <router-view class="other_content"></router-view>
   </div>
@@ -17,13 +17,19 @@ export default {
         }
     },
     created(){
-         const alert = this.$alert({
-          title: "测试",
-          message: "请求登录!",
-          duration: 3000
-        });
-        // alert.show();
 
+
+    },
+    computed:{
+        nav_name(){
+            return this.$route.meta.name||'陈湖旧事'
+        },
+        bg(){
+            return this.$route.meta.bg||'#FFFFFF'
+        },
+        color(){
+            return this.$route.meta.color||'#000000'
+        }
     },
     methods:{
         // 返回按钮
@@ -36,6 +42,11 @@ export default {
 </script>
 
 <style scoped="scoped">
+.other_page{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 .other_header{
     position: fixed;
     top: 0;
@@ -45,6 +56,7 @@ export default {
     height: 1rem;
     line-height: 1rem;
     box-sizing: border-box;
+    /* overflow: hidden; */
    
 
 }
@@ -54,12 +66,14 @@ export default {
     letter-spacing: 6px;
 }
 .back_icon{
+    display: inline-block;
     position: absolute;
     left: 0;
     margin-left: 0.4rem;
     transform: scale(1.25,2);
 }
 .other_content{
+    flex: 1;
     padding-top: 1rem;
 }
 </style>

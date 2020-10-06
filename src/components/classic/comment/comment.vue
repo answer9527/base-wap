@@ -26,7 +26,7 @@
                   </div>
                   <div class="right_bottom flex-x flex-x-between">
                       <div>{{$common.formatTime(item.createTime)}}</div>
-                      <div  class="del_color" v-if="item.uid==uid" @click="del_comment(item.id)">删除</div>
+                      <div  class="root_right del_color" v-if="item.uid==uid" @click="del_comment(item.id)">删除</div>
                       <div class="root_right replay_color" v-else @click="open_input({'userName':item.userName,'pid':commentId,'uid_r':item.uid})">回复</div>
                   </div>
               </div>

@@ -20,7 +20,10 @@ const set_token = ({commit},token)=>{
 const set_uid = ({commit},uid)=>{
     commit('SET_UID',uid)
 }
-
+const set_userinfo = ({commit},userInfo)=>{
+    commit('SET_USERINFO',userInfo)
+}
+// 删除token和用户信息
 const del_token_userinfo=({commit})=>{
     commit('DEL_TOKEN_USERINFO')
 }
@@ -34,5 +37,6 @@ export{
     update_classic,
     set_token,
     set_uid,
+    set_userinfo,
     del_token_userinfo
 }

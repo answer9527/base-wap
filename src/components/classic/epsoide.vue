@@ -33,7 +33,7 @@ export default {
           type:String
         },
         day:{
-          type:Number
+          type:String
         }
     },
     created(){

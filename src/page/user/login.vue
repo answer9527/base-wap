@@ -47,7 +47,7 @@ export default {
         })
     },
     methods:{
-       ...mapActions(["set_token",'set_uid','del_token_userinfo']),
+       ...mapActions(["set_token",'set_uid','set_userinfo','del_token_userinfo']),
        login(){
             let params = {
                 "loginType":1,
@@ -55,10 +55,12 @@ export default {
                 "password":this.password
             }
             UserModel.login(params).then(res=>{
-                let token = res.data.token
+                let result = res.data
+                let token = result.token
                 this.set_token(token)
-                let uid = res.data.uid
+                let uid = result.uid
                 this.set_uid(uid)
+                this.set_userinfo(result.userInfo)
                 if(this.before_route=="/register"){
 
                     // 如果是从register跳进来的,则从浏览器的history跳回上一个

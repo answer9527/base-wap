@@ -16,9 +16,27 @@ Vue.use(common)
 import createAlert from "./components/common/Alert/index"
 Vue.use(createAlert)
 
+// 全局的公共确认框
+import confirmAlert from "./components/common/ConfirmAlert/index"
+Vue.use(confirmAlert)
+
+// 全局的选择器组件(作废 需要用标签形式注册)
+// import createActionSheet from "./components/common/ActionSheet/index"
+// Vue.use(createActionSheet)
+import actionSheet from "./components/common/ActionSheet/index"
+Vue.use(actionSheet)
+
+// import ActionSheet from "./components/common/ActionSheet/index.vue"
+// Vue.component("v-action-sheet",ActionSheet)
+
+// import openActionSheet from "./components/common/ActionSheet/index.js"
+// Vue.use(openActionSheet)
+
 // 全局引入注册评论组件
 import CommentBox from "./components/common/Comment/index"
 Vue.component("v-comment-write",CommentBox)
+
+
 
 Vue.config.productionTip = false
 
@@ -30,6 +48,11 @@ if (sessionStorage.getItem('token')) {
 // 刷新后缓存的uid
 if (sessionStorage.getItem('uid')) {
   store.commit('SET_UID', sessionStorage.getItem('uid'))
+}
+
+// 刷新后缓存UserInfo
+if(sessionStorage.getItem("userInfo")){
+  store.commit("SET_USERINFO",JSON.parse(sessionStorage.getItem("userInfo")))
 }
 
 // 请求拦截器
@@ -57,10 +80,10 @@ axios.interceptors.response.use(function (response) {
   // 4000开头的为token异常
   let re =/^4000/
   if(re.test(code)){
-    alert(error.response.data.message)
+    Vue.prototype.$alert().error(error.response.data.message)
     router.push({path:"/login",replace:true})
   }else if(code!=0){
-    alert(error.response.data.message)
+    Vue.prototype.$alert().error(error.response.data.message)
   }
   return Promise.reject(error);
 });

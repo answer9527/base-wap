@@ -47,18 +47,31 @@ export default {
         type: String,
         default:"文明发言，理性讨论！"
     },
+    disabled:{
+      type:Boolean,
+      default:true
+    }
   },
   methods: {
     // 打开主动输入的点评框
     open_root_comment_input() {
-      this.$emit("resetTextPla")
-      this.isRoot = true
-      this.height = "4.6rem";
+      if(this.disabled){
+        this.$emit("resetTextPla")
+        this.isRoot = true
+        this.height = "4.6rem";
+      }else{
+        this.$alert().error("未开放！")
+      }
+
     },
      open_reply_comment_input() {
-     
-      this.isRoot = false
-      this.height = "4.6rem";
+       if(this.disabled){
+        this.isRoot = false
+        this.height = "4.6rem";
+       }else{
+        this.$alert().error("未开放！")
+       }
+
     },
     // 关闭输入框
     closeText() {
@@ -70,7 +83,6 @@ export default {
               "content":this.text_val
             }
           if(this.isRoot){
-
             this.$emit("root_comment",params)
 
           }else{
@@ -95,7 +107,6 @@ export default {
   color: #c1c1c1;
   box-sizing: border-box;
   border-top: 1px solid #eaeaea;
-  width: 100%;
   padding: 0.14rem 0;
 }
 .input_bar {
@@ -105,15 +116,6 @@ export default {
   padding: 0;
   padding: 0.16rem 0.3rem;
   font-size: 0.24rem;
-}
-.mask {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  transition: 1s all;
-  z-index: 9999;
 }
 .comment_text_box {
   position: fixed;

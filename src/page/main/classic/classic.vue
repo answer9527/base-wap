@@ -107,7 +107,7 @@ export default {
       if(val<10){
           return "0"+val
       }else{
-          return val
+          return val+""
       }
     }
 

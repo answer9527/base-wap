@@ -33,12 +33,18 @@ const mutations ={
         state.uid = uid
         sessionStorage.setItem("uid",uid)
     },
+    SET_USERINFO(state,userInfo){
+        state.userInfo = userInfo
+        sessionStorage.setItem("userInfo",JSON.stringify(userInfo))
+    },
     // 清除uid和清除token
     DEL_TOKEN_USERINFO(state){
         state.token = ""
         state.uid = 0
+        state.userInfo={}
         sessionStorage.removeItem("token")
         sessionStorage.removeItem("uid")
+        sessionStorage.removeItem("userInfo")
     }
 }
 export{

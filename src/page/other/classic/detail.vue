@@ -117,6 +117,7 @@ export default {
           "classicId":this.classic_id
         }
         CommentModel.insertComment(params).then(res=>{
+          this.$alert().success(res.message)
           this.resetComment()
         })
       },
@@ -128,14 +129,21 @@ export default {
           'uid_r':this.reply_temp.uid_r
         }
         CommentModel.insertComment(params).then(res=>{
+          this.$alert().success(res.message)
           this.resetComment()
         })
       },
       // 删除点评
       del_comment(e){
-          CommentModel.delComment(e).then(res=>{
-            this.resetComment()
+          this.$confirmAlert("是否删除该评论？").then(()=>{
+            CommentModel.delComment(e).then(res=>{
+              this.$alert().success(res.message)
+              this.resetComment()
+            })
+          }).catch(()=>{
+            this.$alert("取消删除")
           })
+
       },
       // 重置  placeholder
       resetTextPla(){

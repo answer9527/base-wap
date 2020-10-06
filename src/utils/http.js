@@ -1,4 +1,4 @@
-import {config} from "../config/config"
+import config from "../config/config"
 import axios from "axios"
 axios.defaults.baseURL=config.base_url
 class Http{

@@ -15,7 +15,21 @@ const createAlert = function(component,props){
 export default{
     install(){
         Vue.prototype.$alert = options=>{
-            return createAlert(Alert,options)
+            let alert;
+            if(options){ 
+                let data = options;
+                if(typeof options == "string"){
+                    data = {
+                        "message":options
+                    }
+                }
+                alert=createAlert(Alert,data)
+                alert.show()
+            }else{
+                alert=createAlert(Alert,options)
+            }
+            
+            return alert
         }
     }
 }
