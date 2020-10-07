@@ -1,12 +1,13 @@
 <template>
   <div class="flex-y flex-y-center">
-    <div class="userInfo">
+    <div class="userInfo flex-x">
         <div class="avatar" :style="{'backgroundImage':'url('+userInfo.avatarUrl+')'}"></div>
         <div class="userName flex-x flex-y-center flex-x-center">
           <span>{{userInfo.userName}}</span>
           <span class="boy_icon sex_icon" v-if="userInfo.gender==1"></span>
           <span class="girl_icon sex_icon" v-if="userInfo.gender==0||userInfo.gender==2"></span>
         </div>
+        <div>></div>
     </div>
     <!-- <div class="about_icon">
       与我相关
@@ -109,18 +110,21 @@ export default {
 
 <style scoped="scoped">
 .userInfo{
-  padding-top: 0.2rem;
+  padding: 0.2rem 0.4rem 0 0.4rem;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
+
+
 }
 .userInfo>.avatar{
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.2rem;
+  height: 1.2rem;
   /* background: red; */
   border-radius: 50%;
   background-position: center;
   background-size: contain;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 .userInfo>.userName{
   text-align: center;
@@ -141,7 +145,6 @@ export default {
   height: 0.32rem;
   background-position: center;
   background-size: contain;
-  position: a;
 }
 .userInfo>.userName>.boy_icon{
   background-image: url(../../../assets/images/my/boy_icon.png);
@@ -149,6 +152,18 @@ export default {
 .userInfo>.userName>.girl_icon{
   background-image: url(../../../assets/images/my/girl_icon.png);
 }
+/* .userInfo>.userName>span:last-child{
+  font-size: 0.2rem;
+  color: #FFFFFF;
+  margin-left: 0.1rem;
+  width: 0.8rem;
+  text-align: center;
+  background: #F48041;
+  color: #FFFFFF;
+  border-radius: 0.05rem;
+  margin-right: 0.2rem;
+  display: inline-block;
+} */
 .about_icon{
     padding: 0.08rem 0;
     margin-top: 0.4rem;

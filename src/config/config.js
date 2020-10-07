@@ -13,4 +13,4 @@ const prod = {
      // 接口地址
      base_url:"/mina/v1"
 }
-export default prod
+export default dev

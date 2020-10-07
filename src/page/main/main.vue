@@ -51,10 +51,10 @@ export default {
 .app-logo{
     background: url(../../assets/images/logo-header.png) no-repeat;
     width: 6rem;
-    height: 0.6rem;
+    height:0.8rem;
     background-position: center;
     background-size: contain;
-    margin: 0.2rem auto;
+    margin: 0.1rem auto;
 }
 .app-content{
     padding: 1rem 0 1rem 0;
