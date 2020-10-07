@@ -5,7 +5,7 @@
               <div class="detail_title">{{title}}</div>
               <div class="detail_author"> —— {{author||'未知'}}</div>
           </div>
-          <div class="first_right"></div>
+          <div :class="['first_right',{'roll':playing}]" @click="playOrPause"></div>
       </div>
       <div class="detail_intro">
           <div class="intro_left_box">
@@ -23,11 +23,27 @@
 </template>
 
 <script>
+import {mapState,mapActions} from "vuex"
 export default {
     name:"classicDetail",
     data(){
         return{
             
+        }
+    },
+    computed:{
+        ...mapState(["playingAudio","player","playerStatus"]),
+        playing:{
+            get(){
+                if(this.playerStatus){
+                    return this.playingAudio == this.src
+                }else{
+                    return false 
+                }
+            },
+            set(){
+
+            }
         }
     },
     props:{
@@ -42,6 +58,25 @@ export default {
         },
         content:{
             type:String
+        },
+        src:{
+           type:String 
+        }
+    },
+    methods:{
+        ...mapActions(['set_playing_audio','set_player_status']),
+        playOrPause(){
+            if(this.playing){
+                this.set_player_status(false)
+                this.player.pause()
+            }else{
+               if(this.player.src != this.src){
+                   this.player.src = this.src
+                   this.set_playing_audio(this.src)
+               }
+               this.set_player_status(true)
+               this.player.play()   
+            }
         }
     }
 }
@@ -105,5 +140,19 @@ export default {
   height:0.4rem;
   position: relative;
   bottom: -0.1rem;
+}
+.roll{
+  animation: myAnimation 2s;	
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes myAnimation{
+  form {
+          transform: rotate(0deg);
+      }
+  to {
+                  transform: rotate(360deg);
+      }
+
 }
 </style>

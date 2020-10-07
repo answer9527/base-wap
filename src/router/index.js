@@ -29,6 +29,9 @@ import MsgCenter from "../page/other/msg/msgCenter"
 import ClassicMsg from "../page/other/msg/classicMsg"
 import HoleMsg from "../page/other/msg/holeMsg"
 
+// 网抑一下
+import Sentence from "../page/other/sentence/sentence"
+
 import Login from "../page/user/login.vue"
 import Register from "../page/user/register.vue"
 Vue.use(Router)
@@ -201,6 +204,16 @@ export default new Router({
           component:HoleMsg,
           meta:{
             name:"树洞消息"
+          }
+        },
+        // 网抑一下
+        {
+          path:"/other/sentence",
+          name:"Sentence",
+          component:Sentence,
+          meta:{
+            name:"网抑一下",
+            bg:"#EFF4F8"
           }
         }
 

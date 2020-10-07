@@ -28,6 +28,19 @@ const del_token_userinfo=({commit})=>{
     commit('DEL_TOKEN_USERINFO')
 }
 
+// 更新正在播放的音乐链接
+const set_playing_audio=({commit},playingAudio)=>{
+    commit("SET_PLAYING_AUDIO",playingAudio)
+}
+
+// 更新播放器的播放状态
+const set_player_status = ({commit},status)=>{
+    commit("SET_PLAYER_STATUS",status)
+}
+
+
+
+
 
 export{
     set_latest,
@@ -38,5 +51,7 @@ export{
     set_token,
     set_uid,
     set_userinfo,
-    del_token_userinfo
+    del_token_userinfo,
+    set_playing_audio,
+    set_player_status
 }

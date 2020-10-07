@@ -33,7 +33,7 @@ export default {
           {
               "tabName": "网抑一下",
               "tabImage": require("../../../assets/images/my/sentence@tag.png"),
-              "tabUrl": "/pages/sentence/index",
+              "tabUrl": "/other/sentence",
               "count":0,
           },
           {

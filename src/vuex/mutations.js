@@ -45,7 +45,18 @@ const mutations ={
         sessionStorage.removeItem("token")
         sessionStorage.removeItem("uid")
         sessionStorage.removeItem("userInfo")
+    },
+
+    // 缓存正在播放的音乐链接
+    SET_PLAYING_AUDIO(state,playingAudio){
+        state.playingAudio = playingAudio
+        // sessionStorage.setItem("playingAudio",playingAudio)
+    },
+    // 更新播放器的播放状态
+    SET_PLAYER_STATUS(state,status){
+        state.playerStatus = status
     }
+
 }
 export{
     mutations 

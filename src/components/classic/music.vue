@@ -4,7 +4,7 @@
           <div :style="{'backgroundImage':'url('+image+')','backgroundPosition':'center','backgroundSize':'contain'}" :class="[{'roll':playing},'classic_image','flex-x','flex-x-center','flex-y-center']">
               
           </div>
-          <div :class="[playing?'playing':'pause','music_btn']"></div>
+          <div :class="[playing?'playing':'pause','music_btn']" @click="playOrPause"></div>
       </div>
       <div class="classic_icon"></div>
       <div class="classic_intro">{{intro}}</div>
@@ -12,16 +12,28 @@
 </template>
 
 <script>
+import {mapState,mapActions} from "vuex"
 export default {
     name:"music",
     data(){
         return{
-            playing_src:""
+            watchFlag:false
         }
     },
     computed:{
-        playing(){
-            return false
+        ...mapState(["playingAudio","player","playerStatus"]),
+        playing:{
+            get(){
+                if(this.playerStatus){
+                    return this.playingAudio == this.url
+                }else{
+                    return false 
+                }
+            },
+            set(){
+
+            }
+
         }
     },
     props:{
@@ -35,6 +47,22 @@ export default {
             type:String
         }
 
+    },
+    methods:{
+        ...mapActions(['set_playing_audio','set_player_status']),
+        playOrPause(){
+            if(this.playing){
+                this.set_player_status(false)
+                this.player.pause()
+            }else{
+               if(this.player.src != this.url){
+                   this.player.src = this.url
+                   this.set_playing_audio(this.url)
+               }
+               this.set_player_status(true)
+               this.player.play()   
+            }
+        }
     }
 }
 </script>
