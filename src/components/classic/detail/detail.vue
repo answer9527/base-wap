@@ -5,7 +5,7 @@
               <div class="detail_title">{{title}}</div>
               <div class="detail_author"> —— {{author||'未知'}}</div>
           </div>
-          <div :class="['first_right',{'roll':playing}]" @click="playOrPause"></div>
+          <div :class="['first_right',{'roll':playing}]" @click="playOrPause" v-if="playing"></div>
       </div>
       <div class="detail_intro">
           <div class="intro_left_box">
