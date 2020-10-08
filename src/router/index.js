@@ -32,8 +32,10 @@ import HoleMsg from "../page/other/msg/holeMsg"
 // 网抑一下
 import Sentence from "../page/other/sentence/sentence"
 
+// 用户相关
 import Login from "../page/user/login.vue"
 import Register from "../page/user/register.vue"
+import UserEdit from "../page/user/edit.vue"
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -214,6 +216,17 @@ export default new Router({
           meta:{
             name:"网抑一下",
             bg:"#EFF4F8"
+          }
+        },
+        // 修改个人资料
+        {
+          path:"/other/user/edit",
+          name:"UserEdit",
+          component:UserEdit,
+          meta:{
+            name:"修改资料",
+            bg:"#2F93A2",
+            color:"#FFFFFF"
           }
         }
 

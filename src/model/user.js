@@ -34,6 +34,15 @@ class UserModel{
       method:"POST"
     })
   }
+
+  // 更新个人资料
+  static async updateMyInfo(data){
+    return await Http.request({
+      url:"/user/update/self",
+      data,
+      method:"POST"
+    })
+  }
 }
 export{
   UserModel

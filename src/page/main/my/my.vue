@@ -1,13 +1,18 @@
 <template>
   <div class="flex-y flex-y-center">
-    <div class="userInfo flex-x">
+    <div class="userInfo flex-x flex-y-center">
         <div class="avatar" :style="{'backgroundImage':'url('+userInfo.avatarUrl+')'}"></div>
-        <div class="userName flex-x flex-y-center flex-x-center">
-          <span>{{userInfo.userName}}</span>
-          <span class="boy_icon sex_icon" v-if="userInfo.gender==1"></span>
-          <span class="girl_icon sex_icon" v-if="userInfo.gender==0||userInfo.gender==2"></span>
+        <div>
+          <div class="userName flex-x flex-y-center flex-x-center">
+            <span>{{userInfo.userName}}</span>
+            <span class="boy_icon sex_icon" v-if="userInfo.gender==1"></span>
+            <span class="girl_icon sex_icon" v-if="userInfo.gender==0||userInfo.gender==2"></span>
+          </div>
+          <router-link to="/other/user/edit" tag="div" class="edit_info">点击完善个人资料</router-link>
         </div>
-        <div>></div>
+        <div class="status_box">
+          <div class="status_icon">未认证</div>
+        </div>
     </div>
     <!-- <div class="about_icon">
       与我相关
@@ -110,11 +115,11 @@ export default {
 
 <style scoped="scoped">
 .userInfo{
-  padding: 0.2rem 0.4rem 0 0.4rem;
+ 
+  padding: 0.6rem 0.4rem 0.4rem 0.4rem;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-
 
 }
 .userInfo>.avatar{
@@ -126,7 +131,7 @@ export default {
   background-size: contain;
   /* margin: 0 auto; */
 }
-.userInfo>.userName{
+.userName{
   text-align: center;
   font-size: 0.32rem;
   font-weight: bold;
@@ -135,21 +140,21 @@ export default {
 
 
 }
-.userInfo>.userName>span:nth-child(1){
+.userName>span:nth-child(1){
   display: inline-block;
   padding:0 0.1rem 0 0.2rem;
 }
-.userInfo>.userName>.sex_icon{
+.userName>.sex_icon{
   display: inline-block;
   width: 0.32rem;
   height: 0.32rem;
   background-position: center;
   background-size: contain;
 }
-.userInfo>.userName>.boy_icon{
+.userName>.boy_icon{
   background-image: url(../../../assets/images/my/boy_icon.png);
 }
-.userInfo>.userName>.girl_icon{
+.userName>.girl_icon{
   background-image: url(../../../assets/images/my/girl_icon.png);
 }
 /* .userInfo>.userName>span:last-child{
@@ -164,22 +169,40 @@ export default {
   margin-right: 0.2rem;
   display: inline-block;
 } */
+.edit_info{
+  color: #c2c2c2;
+  font-size: 0.24rem;
+  padding:0.1rem 0.2rem;
+}
+.status_box{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.status_box>.status_icon{
+  background: #464A55;
+  color: #F3DAA0;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.24rem;
+  border-radius: 0.08rem;
+}
 .about_icon{
-    padding: 0.08rem 0;
-    margin-top: 0.4rem;
-    border-bottom: 0.04rem solid #10DFAB;
-    font-size: 0.32rem;
-  }
-  .tab{
-    width: 90%;
-    box-sizing: border-box;
-    border-bottom: 2px solid #F3F3F3;
-    border-top: 2px solid #F3F3F3;
-    padding: 0.4rem 0;
-    margin: 0.3rem 0;
-  }
-    .column{
-    width: 90%;
+  padding: 0.08rem 0;
+  margin-top: 0.4rem;
+  border-bottom: 0.04rem solid #10DFAB;
+  font-size: 0.32rem;
+}
+.tab{
+  width: 90%;
+  box-sizing: border-box;
+  border-bottom: 2px solid #F3F3F3;
+  border-top: 2px solid #F3F3F3;
+  padding: 0.4rem 0;
+  margin: 0.3rem 0;
+}
+.column{
+  width: 90%;
 
-  }
+}
 </style>
