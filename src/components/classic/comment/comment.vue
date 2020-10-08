@@ -2,7 +2,7 @@
   <div class="root_comment">
       <div class="flex-x flex-x-between">
           <div class="root_left">
-              <div class="avatar" :style="{'backgroundImage':'url('+userAvatar+')','backgroundSize':'contain','backgroundPosition':'center'}"></div>
+              <div class="avatar" :style="{'backgroundImage':'url('+userAvatar+')','backgroundSize':'cover','backgroundPosition':'center'}"></div>
               <div class="root_center">
                   <div class="nickname">{{userName}}</div>
                   <div class="createTime">{{$common.formatTime(createTime)}}</div>
@@ -16,7 +16,7 @@
       </div>
       <div class="child_comment_list">
           <div class="child_comment_row  flex-x" v-for="(item,index) in childComment" :key="index">
-              <div class="child_left avatar" :style="{'backgroundImage':'url('+item.userAvatar+')','backgroundSize':'contain','backgroundPosition':'center'}"></div>
+              <div class="child_left avatar" :style="{'backgroundImage':'url('+item.userAvatar+')','backgroundSize':'cover','backgroundPosition':'center'}"></div>
               <div class="child_right flex-y">
                   <div class="right_top flex-x">  
                     <div class="nickName replay_color">{{item.userName}}</div>

@@ -19,10 +19,10 @@
           </div>
           <div class="form_row">
               <div>头像</div>
-              <div :style="{'backgroundImage':'url('+avatarUrl+')','backgroundSize':'contain','backgroundPosition':'center'}">
-                  <input type="file" ref="fileInt" @change="changeHandle"  v-if="avatarUrl" class="person_avatar" style="opacity:0"/>
+              <div :style="{'backgroundImage':'url('+avatarUrl+')','backgroundSize':'cover','backgroundPosition':'center'}">
+                  <input type="file" accept="image/*" ref="fileInt" @change="changeHandle"  v-if="avatarUrl" class="person_avatar" style="opacity:0"/>
                   <div v-else class="add_avatar_btn">
-                      <input class="ten_icon" ref="fileInt" type="file" @change="changeHandle"/>
+                      <input class="ten_icon" accept="image/*" ref="fileInt" type="file" @change="changeHandle"/>
                   </div>
               </div>
           </div>
@@ -144,7 +144,7 @@ export default {
     .ten_icon{
         width: 0.7rem;
         height: 0.7rem;
-        /* background-image:url(../../assets/ten.png) ; */
+        /* background-image:url(../../assets/images/ten.png) ; */
         background-position: center;
         background-size: contain;
     }

@@ -231,7 +231,7 @@ export default {
     width: 0.8rem;
     height: 0.8rem;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     border-radius: 50%;
 }
 .type_tag{

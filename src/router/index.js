@@ -1,41 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Main from "../page/main/main.vue"
-import Classic from "../page/main/classic/classic.vue"
-import Home from "../page/main/home/home.vue"
-import HomeMovie from "../page/main/home/movie.vue"
-import HomeMusic from "../page/main/home/music.vue"
-import HomeEssay from "../page/main/home/essay.vue"
-import HomeVerse from "../page/main/home/verse.vue"
-import HomeStory from "../page/main/home/story.vue"
-import HomeMood from "../page/main/home/mood.vue"
-import My from "../page/main/my/my.vue"
-import Other from "../page/other/other.vue"
-
-import ClassicDetail from "../page/other/classic/detail.vue"
-import LikeList from "../page/other/classic/likeList.vue"
-import AboutUs from "../page/other/about/aboutUs"
-import Version from "../page/other/about/version"
-import Suggest from "../page/other/about/suggest"
-
-// 树洞相关
-
-import HoleList from "../page/other/hole/holeList.vue"
-import AddHole from "../page/other/hole/addHole.vue"
-import HoleDetail from "../page/other/hole/holeDetail.vue"
-
-// 消息相关
-import MsgCenter from "../page/other/msg/msgCenter"
-import ClassicMsg from "../page/other/msg/classicMsg"
-import HoleMsg from "../page/other/msg/holeMsg"
-
-// 网抑一下
-import Sentence from "../page/other/sentence/sentence"
-
-// 用户相关
-import Login from "../page/user/login.vue"
-import Register from "../page/user/register.vue"
-import UserEdit from "../page/user/edit.vue"
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -46,47 +10,47 @@ export default new Router({
     {
       path: '/',
       name: 'Main',
-      component:Main,
+      component:()=>import("../page/main/main.vue"),
       children:[
         {
           path:"/main/classic",
           name:"Classic",
-          component:Classic
+          component:()=>import("../page/main/classic/classic.vue")
         },
         {
           path:"/main/home",
           name:"Home",
-          component:Home,
+          component:()=>import("../page/main/home/home.vue"),
           children:[
             {
               path:"/main/home/movie",
               name:"HomeMovie",
-              component:HomeMovie
+              component:()=>import("../page/main/home/movie.vue")
             },
             {
               path:"/main/home/music",
               name:"HomeMusic",
-              component:HomeMusic
+              component:()=>import("../page/main/home/music.vue")
             },
             {
               path:"/main/home/essay",
               name:"HomeEssay",
-              component:HomeEssay
+              component:()=>import("../page/main/home/essay.vue")
             },
             {
               path:"/main/home/verse",
               name:"HomeVerse",
-              component:HomeVerse
+              component:()=>import("../page/main/home/verse.vue")
             },
             {
               path:"/main/home/story",
               name:"HomeStory",
-              component:HomeStory
+              component:()=>import("../page/main/home/story.vue")
             },
             {
               path:"/main/home/mood",
               name:"HomeMood",
-              component:HomeMood
+              component:()=>import("../page/main/home/mood.vue")
             }
            
           ],
@@ -95,7 +59,7 @@ export default new Router({
         {
           path:"/main/my",
           name:"My",
-          component:My
+          component:()=>import("../page/main/my/my.vue")
         }
       ],
       redirect:"/main/classic"
@@ -103,13 +67,13 @@ export default new Router({
     {
       path:"/other",
       name:'Other',
-      component:Other,
+      component:()=>import("../page/other/other.vue"),
       children:[
         {
           // 传入参数
           path:"/other/classic/detail/:id",
           name:"ClassicDetail",
-          component:ClassicDetail,
+          component:()=>import("../page/other/classic/detail.vue"),
           meta:{
             name:"陈湖旧事"
           }
@@ -117,7 +81,7 @@ export default new Router({
         {
           path:"/other/classic/likeList",
           name:"LikeList",
-          component:LikeList,
+          component:()=>import("../page/other/classic/likeList.vue"),
           meta:{
             name:"我喜欢的"
           }
@@ -125,7 +89,7 @@ export default new Router({
         {
           path:"/other/about/aboutUs",
           name:"AboutUs",
-          component:AboutUs,
+          component:()=>import("../page/other/about/aboutUs.vue"),
           meta:{
             name:"关于我们",
             bg:"#2B4ADC",
@@ -135,7 +99,7 @@ export default new Router({
         {
           path:"/other/about/version",
           name:"Version",
-          component:Version,
+          component:()=>import("../page/other/about/version.vue"),
           meta:{
             name:"版本说明"
           }
@@ -143,7 +107,7 @@ export default new Router({
         {
           path:"/other/about/suggest",
           name:"Suggest",
-          component:Suggest,
+          component:()=>import("../page/other/about/suggest"),
           meta:{
             name:"意见反馈",
             bg:"#0AB6FE",
@@ -154,7 +118,7 @@ export default new Router({
         {
           path:"/other/hole/holeList",
           name:"HoleList",
-          component:HoleList,
+          component:()=>import("../page/other/hole/holeList.vue"),
           meta:{
             name:"树洞",
             bg:"#ECF7E7"
@@ -164,7 +128,7 @@ export default new Router({
         {
           path:"/other/hole/add",
           name:"AddHole",
-          component:AddHole,
+          component:()=>import("../page/other/hole/addHole.vue"),
           meta:{
             name:"创建树洞",
             bg:"#2B4ADC",
@@ -175,7 +139,7 @@ export default new Router({
         {
           path:"/other/hole/detail/:id",
           name:"HoleDetail",
-          component:HoleDetail,
+          component:()=>import("../page/other/hole/holeDetail.vue"),
           meta:{
             name:"树洞详情"
           }
@@ -185,7 +149,7 @@ export default new Router({
         {
           path:"/other/msg/center",
           name:"MsgCenter",
-          component:MsgCenter,
+          component:()=>import("../page/other/msg/msgCenter.vue"),
           meta:{
             name:"消息中心"
           }
@@ -194,7 +158,7 @@ export default new Router({
         {
           path:"/other/msg/classic",
           name:"ClassicMsg",
-          component:ClassicMsg,
+          component:()=>import("../page/other/msg/classicMsg.vue"),
           meta:{
             name:"视听消息"
           }
@@ -203,7 +167,7 @@ export default new Router({
         {
           path:"/other/msg/hole",
           name:"HoleMsg",
-          component:HoleMsg,
+          component:()=>import("../page/other/msg/holeMsg.vue"),
           meta:{
             name:"树洞消息"
           }
@@ -212,7 +176,7 @@ export default new Router({
         {
           path:"/other/sentence",
           name:"Sentence",
-          component:Sentence,
+          component:()=>import("../page/other/sentence/sentence.vue"),
           meta:{
             name:"网抑一下",
             bg:"#EFF4F8"
@@ -222,7 +186,7 @@ export default new Router({
         {
           path:"/other/user/edit",
           name:"UserEdit",
-          component:UserEdit,
+          component:()=>import("../page/user/edit.vue"),
           meta:{
             name:"修改资料",
             bg:"#2F93A2",
@@ -235,12 +199,12 @@ export default new Router({
     {
       path:"/login",
       name:'Login',
-      component:Login
+      component:()=>import("../page/user/login.vue")
     },
     {
       path:"/register",
       name:"Register",
-      component:Register
+      component:()=>import("../page/user/register.vue")
     }
   ]
 })

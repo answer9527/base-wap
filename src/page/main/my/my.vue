@@ -128,7 +128,7 @@ export default {
   /* background: red; */
   border-radius: 50%;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   /* margin: 0 auto; */
 }
 .userName{
