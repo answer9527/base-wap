@@ -37,6 +37,8 @@
     <v-comment-write placeholder="请输入您的点评！" :textarea_pla="textarea_pla" ref="commentWrite" @resetTextPla="resetTextPla" @root_comment="root_comment" @reply_comment="reply_comment">
         <v-like slot="like" :like_count="classic_detail.like_count" :like_status="classic_detail.like_status" @likeOrUnlike="likeOrUnlike"/>
     </v-comment-write>
+
+    <v-load-more @moreEvent="get_more_comment"/>
   </div>
 </template>
 
@@ -54,6 +56,7 @@ export default {
           classic_detail:{},
           size:10,
           page:1,
+          hasNextPage:false,
           comment_list:[],
           // 弹出的，填写输入框的问题样式
           textarea_pla:"文明发言，理性讨论！",
@@ -88,6 +91,7 @@ export default {
         }
           CommentModel.getCommentByCid(params).then(res=>{
             this.comment_list = this.comment_list.concat(res.data.list)
+            this.hasNextPage = res.data.hasNextPage
           })
       },
       // 设置或取消喜欢
@@ -159,9 +163,23 @@ export default {
         }
         CommentModel.getCommentByCid(params).then(res=>{
           this.comment_list = res.data.list
+          this.hasNextPage = res.data.hasNextPage
         })
         
+      },
+      get_more_comment(){
+        if(this.hasNextPage){
+          this.page++
+          this.get_classic_comment()
+        }else{
+          this.$alert().warning("暂无更多！")
+        }
+       
+        
       }
+
+ 
+
 
     }
 }

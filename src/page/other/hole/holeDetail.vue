@@ -50,10 +50,14 @@
               </div> 
           </div>
       </div>
+      <v-load-more @moreEvent="get_more_comment"/>
+      
       <v-comment-write :placeholder="placeholder" :disabled="disabled" :textarea_pla="textarea_pla" ref="commentWrite" 
         @resetTextPla="resetTextPla" 
         @root_comment="root_comment" 
         @reply_comment="reply_comment"/>
+
+        
   </div>
 </template>
 
@@ -189,6 +193,14 @@ export default {
                 this.$alert("取消删除")
             })
 
+        },
+        get_more_comment(){
+            if(this.hasNextPage){
+                this.page++
+                this.get_hole_comment()
+            }else{
+                this.$alert().warning("暂无更多！")
+            }
         }
     }
 }

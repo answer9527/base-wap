@@ -78,7 +78,7 @@ export default {
       this.height = 0;
     },
     send_text(){
-        if(this.text_val.length>=3){
+        if(this.text_val){
             let params ={
               "content":this.text_val
             }
@@ -91,7 +91,7 @@ export default {
           this.text_val=""
           this.closeText()
         }else{
-            alert("您的评论过短")
+            this.$alert().error("文字过短！")
         }
     }
   },

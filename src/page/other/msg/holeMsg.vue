@@ -19,6 +19,7 @@
           />
       </div>
     </div>
+     <v-load-more @moreEvent="get_more"/>
   </div>
 </template>
 
@@ -53,7 +54,15 @@ export default {
               this.hasNextPage = res.data.hasNextPage
               this.msg_list = this.msg_list.concat(res.data.list)
           })
-      }
+      },
+        get_more(){
+          if(this.hasNextPage){
+              this.page++
+              this.get_msg_list()
+          }else{
+              this.$alert().warning("暂无更多！")
+          }
+        }
   }
 }
 </script>

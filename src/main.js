@@ -36,7 +36,9 @@ Vue.use(actionSheet)
 import CommentBox from "./components/common/Comment/index"
 Vue.component("v-comment-write",CommentBox)
 
-
+// 全局引入加载更多
+import LoadMore from "./components/common/LoadMore/index"
+Vue.component('v-load-more',LoadMore)
 
 Vue.config.productionTip = false
 
@@ -53,6 +55,13 @@ if (sessionStorage.getItem('uid')) {
 // 刷新后缓存UserInfo
 if(sessionStorage.getItem("userInfo")){
   store.commit("SET_USERINFO",JSON.parse(sessionStorage.getItem("userInfo")))
+}
+
+// 监听音频播放器播放结束
+if(store.state.player){
+  store.state.player.addEventListener('ended',()=>{
+    store.commit('SET_PLAYER_STATUS',false)
+  })
 }
 
 // 请求拦截器

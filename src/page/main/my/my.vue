@@ -83,11 +83,16 @@ export default {
         "colImage": require("../../../assets/images/my/version@col.png"),
         "colUrl": "/other/about/version",
       },
+      // {
+      //   "colName": "联系我们",
+      //   "colImage": require("../../../assets/images/my/contact@col.png"),
+      //   "colUrl": "/pages/contact/index",
+      // },
       {
-        "colName": "联系我们",
-        "colImage": require("../../../assets/images/my/contact@col.png"),
-        "colUrl": "/pages/contact/index",
-      }
+        "colName": "退出登录",
+        "colImage": require("../../../assets/images/my/exit@col.png"),
+        "colUrl": "/login",
+      },
     ],
     }
   },

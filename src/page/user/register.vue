@@ -63,7 +63,8 @@ export default {
                 'password':this.password
             }
             UserModel.register(params).then(res=>{
-                alert(res.message)
+                this.$alert().success(res.message)
+                this.$router.push("/login")
             })
         },
     }

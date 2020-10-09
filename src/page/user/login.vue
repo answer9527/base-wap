@@ -1,5 +1,6 @@
 <template>
   <div class="login_page">
+      <router-link to="/" class="back_icon" tag="span"><</router-link>
       <div class="top_bg">
         <span class="logo"></span>
         <div class="sys-name">陈湖旧事欢迎您</div>
@@ -82,6 +83,15 @@ export default {
 .login_page{
 
 
+}
+.back_icon{
+    display: inline-block;
+    position: fixed;
+    left: 0;
+    top: 0.2rem;
+    margin-left: 0.4rem;
+    transform: scale(1.25,2);
+    color: #FFFFFF;
 }
 .top_bg{
     height: 3.2rem;
