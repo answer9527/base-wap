@@ -1,13 +1,13 @@
 <template>
   <div>
-        <ul class="classic_nav flex-x flex-x-around">
-            <router-link to="/main/home/movie" tag="li" :class="{'active':active_route=='/main/home/movie'}">电影</router-link>
-            <router-link to="/main/home/music" tag="li" :class="{'active':active_route=='/main/home/music'}">音乐</router-link>
-            <router-link to="/main/home/verse" tag="li" :class="{'active':active_route=='/main/home/verse'}">诗句</router-link>
-            <router-link to="/main/home/essay" tag="li" :class="{'active':active_route=='/main/home/essay'}">文章</router-link>
-            <router-link to="/main/home/story" tag="li" :class="{'active':active_route=='/main/home/story'}">故事</router-link>
-            <router-link to="/main/home/mood" tag="li"  :class="{'active':active_route=='/main/home/mood'}">随记</router-link>
-        </ul>
+    <ul class="classic_nav flex-x flex-x-around">
+        <router-link to="/main/home/movie" tag="li" :class="{'active':active_route=='/main/home/movie'}">电影</router-link>
+        <router-link to="/main/home/music" tag="li" :class="{'active':active_route=='/main/home/music'}">音乐</router-link>
+        <router-link to="/main/home/verse" tag="li" :class="{'active':active_route=='/main/home/verse'}">诗句</router-link>
+        <router-link to="/main/home/essay" tag="li" :class="{'active':active_route=='/main/home/essay'}">文章</router-link>
+        <router-link to="/main/home/story" tag="li" :class="{'active':active_route=='/main/home/story'}">故事</router-link>
+        <router-link to="/main/home/mood" tag="li"  :class="{'active':active_route=='/main/home/mood'}">随记</router-link>
+    </ul>
   </div>
 </template>
 

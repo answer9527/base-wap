@@ -1,6 +1,10 @@
 <template>
   <div>
       <!-- <div :class="['loading',{'hidden':more_flag}]">加载中...</div> -->
+      <div class="loading">
+        {{this.getScrollTop()}},{{this.getWindowHeight()}},{{this.getScrollHeight()}}
+      </div>
+      
   </div>
 </template>
 

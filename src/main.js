@@ -42,6 +42,8 @@ Vue.component('v-load-more',LoadMore)
 
 Vue.config.productionTip = false
 
+
+
 // 刷新后缓存token
 if (sessionStorage.getItem('token')) {
   store.commit('SET_TOKEN', sessionStorage.getItem('token'))

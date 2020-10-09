@@ -115,7 +115,7 @@ export default {
 }
 
 .intro_left_box{
- position: relative;
+    position: relative;
 }
 .intro_left{
   width: 0.4rem;

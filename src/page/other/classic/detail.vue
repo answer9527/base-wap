@@ -128,6 +128,7 @@ export default {
       // 提交回复他人的内容
       reply_comment(e){
         let params = {
+          "classicId":this.classic_id,
           'content':e.content,
           'pid':this.reply_temp.pid,
           'uid_r':this.reply_temp.uid_r
