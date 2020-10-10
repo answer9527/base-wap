@@ -27,6 +27,7 @@
 
               <div class="root_comment_out" v-if="holeInfo.commentVisible==1">
                   <div class="root_comment" v-if="comment_list.length>0">
+                      <v-load-more @moreEvent="get_more_comment">
                         <v-hole-comment v-for="(item,index) in comment_list" :key="index"
                         :commentId="item.id"
                         :commentUid="item.uid"
@@ -38,6 +39,7 @@
                         @open_input="open_reply_input"
                         @del_comment="del_comment"
                     />
+                    </v-load-more>
                   </div>
                     <div class="no_more_box flex-y flex-y-center" v-else>
                         <div class="no_more"></div>
@@ -50,7 +52,7 @@
               </div> 
           </div>
       </div>
-      <v-load-more @moreEvent="get_more_comment"/>
+      
       
       <v-comment-write :placeholder="placeholder" :disabled="disabled" :textarea_pla="textarea_pla" ref="commentWrite" 
         @resetTextPla="resetTextPla" 

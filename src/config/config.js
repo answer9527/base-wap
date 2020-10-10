@@ -13,4 +13,11 @@ const prod = {
      // 接口地址
      base_url:"/mina/v1"
 }
+const apk = {
+    // 项目域名
+    domain_url:"/",
+    // 接口地址
+    base_url:"https://story.chenlake.com/mina/v1"
+}
+
 export default prod

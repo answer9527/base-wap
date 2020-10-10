@@ -1,25 +1,27 @@
 <template>
   <div class="msg_page">
     <div class="msg_list">
-        <div v-for="(item,index) in msg_list" :key="index" class="msg_box">
-            <v-time :time="item.createTime" class="msg_time"/>
-            <v-msg-card 
-                :ids="item.id" 
-                :title="item.title" 
-                :commentId="item.commentId" 
-                :commentPid="item.commentPid" 
-                :commentUid="item.commentUid" 
-                :holeOrClassicId="item.holeOrClassicId" 
-                :userName="item.userName" 
-                :content="item.content" 
-                :isRoot="item.isRoot" 
-                :isRead="item.isRead" 
-                :type="item.type" 
-                :avatarUrl="item.avatarUrl"
-            />
-        </div>
+        <v-load-more @moreEvent="get_more">
+            <div v-for="(item,index) in msg_list" :key="index" class="msg_box">
+                <v-time :time="item.createTime" class="msg_time"/>
+                <v-msg-card 
+                    :ids="item.id" 
+                    :title="item.title" 
+                    :commentId="item.commentId" 
+                    :commentPid="item.commentPid" 
+                    :commentUid="item.commentUid" 
+                    :holeOrClassicId="item.holeOrClassicId" 
+                    :userName="item.userName" 
+                    :content="item.content" 
+                    :isRoot="item.isRoot" 
+                    :isRead="item.isRead" 
+                    :type="item.type" 
+                    :avatarUrl="item.avatarUrl"
+                />
+            </div>
+        </v-load-more>
     </div>
-    <v-load-more @moreEvent="get_more"/>
+    
   </div>
 </template>
 

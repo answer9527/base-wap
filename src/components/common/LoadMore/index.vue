@@ -1,8 +1,12 @@
 <template>
   <div>
       <!-- <div :class="['loading',{'hidden':more_flag}]">加载中...</div> -->
-      <div class="loading">
-        {{this.getScrollTop()}},{{this.getWindowHeight()}},{{this.getScrollHeight()}}
+      <div     
+        @touchstart="touchstart" 
+        @touchend="touchend" 
+        @touchmove="touchmove"
+        >
+        <slot></slot>
       </div>
       
   </div>
@@ -13,25 +17,11 @@ export default {
   name: "LoadMore",
   data() {
     return {
-        more_flag:true
+        start:0,
+        end:0
     };
   },
-  mounted() {
-    window.addEventListener("scroll",this.scrollFn)
-  },
-  destroyed() {
-    window.removeEventListener('scroll', this.scrollFn); // 销毁监听
-  },
   methods: {
-    scrollFn() {
-      if (this.getScrollTop() + this.getWindowHeight() == this.getScrollHeight()) {
-        // 　　　　　　滚到底了
-        this.$emit("moreEvent")
-        this.more_flag = false
-      }else{
-          this.more_flag = true
-      }
-    },
     // 文档高度
     getScrollTop() {
       var scrollTop = 0,
@@ -48,7 +38,8 @@ export default {
           ? bodyScrollTop
           : documentScrollTop;
       return scrollTop;
-    }, //可视窗口高度
+    }, 
+    //可视窗口高度
 
     getWindowHeight() {
       var windowHeight = 0;
@@ -77,6 +68,22 @@ export default {
           : documentScrollHeight;
       return scrollHeight;
     },
+    touchstart(e){
+        this.start = e.targetTouches[0].clientY
+    },
+    touchend(e){
+        this.end = e.changedTouches[0].clientY
+        if(this.start -this.end >0){
+            if(Math.abs(this.getScrollTop() + this.getWindowHeight() - this.getScrollHeight())<100){
+                this.$emit("moreEvent")
+            }
+        }
+    },
+    touchmove(e){
+      // e.preventDefault()
+
+    }
+
   },
 };
 </script>

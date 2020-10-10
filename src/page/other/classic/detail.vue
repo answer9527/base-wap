@@ -12,7 +12,8 @@
       <div class="comment_box">
         <div class="comment_nav">相关评论</div>
         <div class="root_comment_out" v-if="comment_list.length>0">
-          <div class="root_comment" v-for="(item,index) in comment_list" :key="index">
+          <v-load-more @moreEvent="get_more_comment">
+            <div class="root_comment" v-for="(item,index) in comment_list" :key="index">
               <v-classic-comment 
                 :commentId="item.id"
                 :commentUid="item.uid"
@@ -25,6 +26,8 @@
                 @del_comment="del_comment"
               />
           </div>
+          </v-load-more>
+
         </div>
         <div class="no_more_box flex-y flex-y-center" v-else>
             <div class="no_more"></div>
@@ -37,8 +40,6 @@
     <v-comment-write placeholder="请输入您的点评！" :textarea_pla="textarea_pla" ref="commentWrite" @resetTextPla="resetTextPla" @root_comment="root_comment" @reply_comment="reply_comment">
         <v-like slot="like" :like_count="classic_detail.like_count" :like_status="classic_detail.like_status" @likeOrUnlike="likeOrUnlike"/>
     </v-comment-write>
-
-    <v-load-more @moreEvent="get_more_comment"/>
   </div>
 </template>
 
@@ -170,6 +171,7 @@ export default {
       },
       get_more_comment(){
         if(this.hasNextPage){
+          // this.$alert().success("加载中")
           this.page++
           this.get_classic_comment()
         }else{
