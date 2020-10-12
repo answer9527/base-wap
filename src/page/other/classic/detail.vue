@@ -157,11 +157,10 @@ export default {
       },
       // 重置评论列表
       resetComment(){
-        this.page = 0
         let params = {
           "key":this.classic_id,
-          "size":this.size,
-          "page":this.page
+          "size":this.size*this.page,
+          "page":1
         }
         CommentModel.getCommentByCid(params).then(res=>{
           this.comment_list = res.data.list

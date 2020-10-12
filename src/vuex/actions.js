@@ -1,14 +1,22 @@
+// 设置最新的一条classic
 const set_latest = ({commit},latest)=>{
     commit("SET_LATEST",latest)
 }
+// 加classic_flag
 const add_classic_flag = ({commit})=>{
     commit("ADD_CLASSIC_FLAG")
 }
+// 减classic_flag
 const reduce_classic_flag = ({commit})=>{
     commit("REDUCE_CLASSIC_FLAG")
 }
+// 追加classic进数组
 const push_classic = ({commit},classic)=>{
     commit("PUSH_CLASSIC",classic)
+}
+// 重置classic相关配置
+const reset_classic_about = ({commit})=>{
+    commit("RESET_CLASSIC_ABOUT")
 }
 // 更新classic  暂未使用到
 const update_classic = ({commit},classic)=>{
@@ -47,6 +55,7 @@ export{
     add_classic_flag,
     reduce_classic_flag,
     push_classic,
+    reset_classic_about,
     update_classic,
     set_token,
     set_uid,

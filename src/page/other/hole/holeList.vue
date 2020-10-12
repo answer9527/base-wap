@@ -78,7 +78,7 @@ export default {
 .go_create{
     display: block;
     width: 3.2rem;
-    margin: 0.6rem auto;
+    margin: 0.3rem auto;
     background: #C9B7AD;
     color: #FFFFFF;
     padding: 0.12rem 0;

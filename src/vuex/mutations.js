@@ -23,6 +23,13 @@ const mutations ={
     UPDATE_CLASSIC(state,classic){
         state.classic_list[state.classic_flag] = classic
     },
+    // 登录后重置classic相关配置
+    RESET_CLASSIC_ABOUT(state){
+        state.classic_list=[]
+        state.latest=0
+        sessionStorage.removeItem("latest")
+        state.classic_flag=-1
+    },
     // 缓存token
     SET_TOKEN(state,token){
         state.token = token

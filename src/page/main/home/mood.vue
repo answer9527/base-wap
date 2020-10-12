@@ -1,6 +1,8 @@
 <template>
   <div>
-      <v-moodListOne v-for="(item,index) in classic_list" :key="index" :intro="item.intro" :createTime="item.createTime" :author="item.author"/>
+      <v-load-more @moreEvent="get_more_list">
+        <v-moodListOne v-for="(item,index) in classic_list" :key="index" :intro="item.intro" :createTime="item.createTime" :author="item.author"/>
+      </v-load-more>
   </div>
 </template>
 

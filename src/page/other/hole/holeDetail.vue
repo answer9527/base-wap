@@ -171,11 +171,10 @@ export default {
         },
         // 重新刷新评论
         resetComment(){
-            this.page= 1
             let params = {
-                page:this.page,
-                size:this.size,
-                key:this.holeInfo.id
+                "key":this.hole_id,
+                "size":this.size*this.page,
+                "page":1
             }
             HoleModel.get_Comment(params).then(res=>{
                 this.hasNextPage = res.data.hasNextPage

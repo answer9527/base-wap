@@ -7,8 +7,11 @@
         @touchmove="touchmove"
         >
         <slot></slot>
+        <div class="loading flex-x flex-x-center flex-y-center" v-if="flag">
+          <img src="../../../assets/images/loading.gif" alt="" class="loading-img">
+        </div>
       </div>
-      
+     
   </div>
 </template>
 
@@ -18,7 +21,8 @@ export default {
   data() {
     return {
         start:0,
-        end:0
+        end:0,
+        flag:false
     };
   },
   methods: {
@@ -75,7 +79,12 @@ export default {
         this.end = e.changedTouches[0].clientY
         if(this.start -this.end >0){
             if(Math.abs(this.getScrollTop() + this.getWindowHeight() - this.getScrollHeight())<100){
-                this.$emit("moreEvent")
+                this.flag= true
+                setTimeout(() => {
+                  this.flag = false
+                  this.$emit("moreEvent")
+                }, 1500);
+                
             }
         }
     },
@@ -96,10 +105,17 @@ export default {
     left: 0;
     right: 0;
     margin: 0;
-    width: 100px;
-    height: 50px;
-    z-index: 99999;
+    /* width: 100px;
+    height: 50px; */
+    z-index: 9999;
     margin: auto;
+    background-color: #F3F3F3;
+    opacity: 0.8;
+
+}
+.loading-img{
+    width: 2rem;
+    height:2rem;
 }
 .hidden{
     opacity: 0;

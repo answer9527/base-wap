@@ -1,17 +1,19 @@
 <template>
   <div>
-      <v-essayListOne v-for="(item,index) in classic_list" :key="index" 
-      :classic_id="item.id" 
-      :image="item.image" 
-      :author="item.author" 
-      :title="item.title" 
-      :intro="item.intro"
-      :createTime="item.createTime"
-      >
-        <div slot="like">
-            <v-like :like_count="item.like_count" :like_status="item.like_status"/>
-        </div>
-      </v-essayListOne>
+      <v-load-more @moreEvent="get_more_list">
+        <v-essayListOne v-for="(item,index) in classic_list" :key="index" 
+        :classic_id="item.id" 
+        :image="item.image" 
+        :author="item.author" 
+        :title="item.title" 
+        :intro="item.intro"
+        :createTime="item.createTime"
+        >
+            <div slot="like">
+                <v-like :like_count="item.like_count" :like_status="item.like_status"/>
+            </div>
+        </v-essayListOne>
+      </v-load-more>
   </div>
 </template>
 

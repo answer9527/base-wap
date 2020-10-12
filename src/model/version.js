@@ -5,6 +5,12 @@ class VersionModel{
             url:"/version/list"
         })
     }
+    static async getLatestVersion(){
+        return await Http.request({
+            url:"/version/latest",
+            method:"POST"
+        })
+    }
 }
 export {
     VersionModel

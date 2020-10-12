@@ -100,6 +100,7 @@ export default {
       }else if(this.type==2){
         url='/other/hole/detail/'+this.holeOrClassicId
       }
+      this.setRead()
       this.$router.push(url)
     },
     // 快速回复

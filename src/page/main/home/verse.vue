@@ -1,6 +1,8 @@
 <template>
   <div>
-      <v-verseListOne v-for="(item,index) in classic_list" :key="index" :classic_id="item.id" :image="item.image" :author="item.author" :title="item.title" :intro="item.intro"/>
+      <v-load-more @moreEvent="get_more_list">
+        <v-verseListOne v-for="(item,index) in classic_list" :key="index" :classic_id="item.id" :image="item.image" :author="item.author" :title="item.title" :intro="item.intro"/>
+      </v-load-more>
   </div>
 </template>
 
