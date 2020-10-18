@@ -1,7 +1,15 @@
 <template>
-  <div class="like_box" @click="likeOrUnlike">
+  <div class="like_box flex-x" @click="likeOrUnlike">
       <i :class="{'active':like_status}"></i>
-      <span>{{like_count}}</span>
+      <div>
+        <div :class="'active'+count_flag">
+            <span >{{like_count}}</span>
+            <span >{{like_count}}</span>
+            <span >{{like_count}}</span>
+        </div>
+      </div>
+      
+      
   </div>
 </template>
 
@@ -10,7 +18,7 @@ export default {
     name:"like",
     data(){
         return{
-
+            count_flag:1
         }
     },
     props:{
@@ -26,6 +34,12 @@ export default {
     methods:{
         likeOrUnlike(){
             let behavior = this.like_status?"cancelLike":"setLike"
+            if(this.like_status){
+                this.count_flag--
+            }else{
+                this.count_flag++
+            }
+            
             this.$emit("likeOrUnlike",{behavior})
         }
     }
@@ -56,9 +70,36 @@ export default {
     background-size: contain;
     background-repeat: no-repeat;
 }
-.like_box>span{
+.like_box>div{
+    display: inline-block;
+    min-width: 0.32rem;
     position: relative;
     top: -0.2rem;
+    height: 0.32rem;
+    overflow: hidden;
+    /* right: -0.1rem; */
+   
+}
+.like_box>div>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: 1s all;
+    
+}
+
+.like_box>div>.active0{
+    top: 0;
+}
+.like_box>div>.active1{
+    top: -0.32rem;
+}
+.like_box>div>.active2{
+    top: -0.64rem;
+}
+.like_box>div>div>span{
     font-size: 0.24rem;
     color: #bbbbbb;
 }
