@@ -100,6 +100,8 @@ export default {
     top: -0.64rem;
 }
 .like_box>div>div>span{
+    display: inline-block;
+    height: 0.32rem;
     font-size: 0.24rem;
     color: #bbbbbb;
 }
