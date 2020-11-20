@@ -12,6 +12,13 @@ class LetterModel{
             method:"POST"
         })
     }
+    static async getMyLetterList(data){
+        return await Http.request({
+            url:"/letter/myletter/list",
+            data,
+            method:"POST"
+        })
+    }
 }
 export {
     LetterModel

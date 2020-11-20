@@ -193,6 +193,16 @@ export default new Router({
             bg:"#2F93A2",
             color:"#FFFFFF"
           }
+        },
+        {
+          path:"/other/letter/list",
+          name:"LetterList",
+          component:()=>import("../page/other/letter/letterList.vue"),
+          meta:{
+            name:"给自己的信",
+            bg:"#ECF7E7",
+            color:"#000000"
+          }
         }
 
       ]

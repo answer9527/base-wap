@@ -52,7 +52,7 @@ export default {
           {
               "tabName": "时光邮局",
               "tabImage": require("../../../assets/images/my/mail@tag.png"),
-              "tabUrl": "/pages/beforeLetter/index",
+              "tabUrl": "/other/letter/list",
               "count":0,
           },
           {
