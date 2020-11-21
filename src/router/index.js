@@ -203,6 +203,12 @@ export default new Router({
             bg:"#ECF7E7",
             color:"#000000"
           }
+        },
+        {
+          path:"/other/letter/detail/:id",
+          name:"LetterDetail",
+          component:()=>import("../page/other/letter/letterInfo.vue"),
+
         }
 
       ]

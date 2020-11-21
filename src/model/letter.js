@@ -19,6 +19,12 @@ class LetterModel{
             method:"POST"
         })
     }
+    // 获取我的某封信详情
+    static async getMyLetterDetail(data){
+        return await Http.request({
+            url:"/letter/myletter/detail/"+data.id
+        })
+    }
 }
 export {
     LetterModel
