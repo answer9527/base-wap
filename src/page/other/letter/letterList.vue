@@ -7,7 +7,8 @@
 
       <div class="pageContent">
           <div class="list_top_bg">
-              <img src="../../../assets/images/secret_icon.png" alt="" class="secret_icon">
+              <img src="../../../assets/images/secret_icon.png" alt="" class="secret_icon" @click="go_add">
+              <div class="go_add">点一点瓶体，立刻创建给你未来的信！</div>
               <!-- <img src="../../../assets/iamges/notfound.png" alt=""> -->
           </div>
           <LetterOne v-for="(item,index) in list" :key="index" :letter="item"/>
@@ -18,6 +19,7 @@
 <script>
 import LetterOne from "@/components/letter/LetterOne"
 import {LetterModel} from "@/model/letter"
+import { mapState } from 'vuex'
 export default {
     name:"letterList",
     data(){
@@ -44,6 +46,9 @@ export default {
                 this.list = this.list.concat(res.data.list)
                 this.hasNextPage = res.data.hasNextPage
             })
+        },
+        go_add(){
+            this.$router.push("/other/letter/add")
         }
     }
 }
@@ -106,6 +111,11 @@ export default {
     background: #ECF7E7;
     padding: 0.6rem 0 1.8rem 0;
     box-sizing: border-box;
+}
+.go_add{
+  color: #535353;
+  font-size: 0.24rem;
+  padding:0.1rem 0.2rem;
 }
 .secret_icon{
     width: 3rem;

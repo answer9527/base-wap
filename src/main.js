@@ -26,6 +26,10 @@ Vue.use(confirmAlert)
 import actionSheet from "./components/common/ActionSheet/index"
 Vue.use(actionSheet)
 
+// 全局的时间选择器
+import pikerTime from "./components/common/PikerTime/index"
+Vue.use(pikerTime)
+
 // import ActionSheet from "./components/common/ActionSheet/index.vue"
 // Vue.component("v-action-sheet",ActionSheet)
 

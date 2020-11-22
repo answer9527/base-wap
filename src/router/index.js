@@ -194,6 +194,7 @@ export default new Router({
             color:"#FFFFFF"
           }
         },
+        // 信件列表
         {
           path:"/other/letter/list",
           name:"LetterList",
@@ -204,11 +205,18 @@ export default new Router({
             color:"#000000"
           }
         },
+        // 信件详情
         {
           path:"/other/letter/detail/:id",
           name:"LetterDetail",
           component:()=>import("../page/other/letter/letterInfo.vue"),
 
+        },
+        // 创建未来的信
+        {
+          path:"/other/letter/add",
+          name:"LetterAdd",
+          component:()=>import("../page/other/letter/LetterAdd.vue")
         }
 
       ]
