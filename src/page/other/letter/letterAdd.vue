@@ -7,13 +7,13 @@
         <div class="block_content">
             <div class="form_row">
                 <label for="" class="">标题:</label>
-                <input type="text" placeholder="请填写标题"  />
+                <input type="text" placeholder="请填写标题" v-model="post_title"/>
             </div>
             <div class="content_in">
                 <label class="content_label">
                     请填写您的书信内容:
                 </label>
-                <textarea class="content_txt"  maxlength="5000" style="height:500rpx" placeholder="请填写您的书信内容"></textarea>
+                <textarea class="content_txt"  maxlength="5000"  placeholder="请填写您的书信内容" v-model="post_content"></textarea>
             </div>
         </div>
     </div>
@@ -29,36 +29,111 @@
             </div>
             <div style="padding:20rpx 0">
                 <div class="form_row">
-                    <img class="" src="../../../assets/images/mail_icon.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""/>
+                    <img class="" src="../../../assets/images/mail_icon.png"/>
                     <div class="form_title">电子邮箱</div>
-                    <input type="text" placeholder="请填写接收邮箱"  bindinput="changeEmail"/>
+                    <input type="text" placeholder="请填写接收邮箱" v-model="post_email"/>
                 </div>
                 <div class="form_row">
-                    <img class="" src="../../../assets/images/time_icon.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""/>
+                    <img class="" src="../../../assets/images/time_icon.png"/>
                     <div class="form_title">邮寄时间</div>
                     <div class="placeholder date">
-                        <!-- <picker mode="multiSelector" value="{{dateTime}}" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
-                            <div class="tui-picker-detail">
-                                {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{day}}
-                            </div>
-                        </picker> -->
-                       <v-piker-time :rows="5" :rowHeight="50"/>
-                    </div>
-                     
+                       <v-piker-time :rows="5" :rowHeight="50" :year="dateTimeArray[0]" :month="dateTimeArray[1]" :day="dateTimeArray[2]" @changeTime="changeTime"/>
+                    </div>                     
+                </div>
+                <div class="form_row">
+                    <img class="" src="../../../assets/images/time_icon.png"/>
+                    <div class="form_title">信件类型</div>    
+                    <div  class="placeholder date" @click="openSheet">
+                        {{post_type.label}}
+                    </div>               
                 </div>
             </div>
         </div>
     </div>
     <div class="block_three">
-        <div class="send_btn" bind:tap="send_letter">寄给未来的你</div>
+        <div class="send_btn" @click="send_letter">寄给未来的你</div>
     </div>
+    <v-action-sheet :propData="actionProps" @confirm_sheet="confirm_sheet" ref="actionSheet"/>
 
 </div>
 </template>
 
 <script>
+import {LetterModel} from "@/model/letter"
 export default {
+    name:"LetterAdd",
+    data(){
+        return{
+            dateTimeArray:[new Date().getFullYear(),new Date().getMonth()+1,new Date().getDate()],
+            post_title:"",
+            post_content:"",
+            post_email:"",
+            post_type:{
+                "label":"普通信件",
+                "value":1
+            },
+            actionProps:{
+                "title":"请选择信件类型",
+                "type":"sex",
+                "list":[
+                    {
+                        "label":"普通信件",
+                        "value":1
+                    },
+                    {
+                        "label":"手抄信件",
+                        "value":2
+                    },
+                    {
+                        "label":"语音信件",
+                        "value":3
+                    }
+                ]
+            }
 
+        }
+    },
+    methods:{
+        // 提交信件
+        send_letter(){
+            let param = {
+                title:this.post_title,
+                content:this.post_content,
+                email:this.post_email,
+                type:this.post_type.value,
+                planTime:new Date(...this.dateTimeArray)
+            }   
+            // 如果有空值
+            if(Object.values(param).includes("")){
+                this.$alert().error("请填写完整")
+                return false
+            }
+              //  如果时间在今天之前
+            if(param.planTime<=new Date()){
+                this.$alert().error("日期不符合")
+                return false
+            }
+            LetterModel.insertLetter(param).then(res=>{
+                this.$alert().success(res.message)
+                this.post_title=""
+                this.post_content=""
+            })
+
+           
+        },
+        // 监听时间改变
+        changeTime(e){
+            this.dateTimeArray = e
+        },
+        // 打开选择类型的选择
+        openSheet(){
+           this.$refs.actionSheet.show()
+        },
+        // 确认选择
+        confirm_sheet(e){
+            this.post_type =e
+        }
+    }
 }
 </script>
 
@@ -129,8 +204,8 @@ export default {
 }
 
 .form_row>img{
-    width: 0.48rem;
-    height: 0.48rem;
+    width: 0.4rem;
+    height: 0.4rem;
 }
 .form_row>.form_title{
     font-size: 0.28rem;

@@ -24,14 +24,28 @@ export default {
   name:"pikerTime",
   data(){
     return{
-      show:true,
+      show:false,
       pikerHeight:0,
       lineTop:0,
       lineBottom:0,
-      years:[2020,2021,2022,2023,2024,2025,2026,2027],
+      years:[this.year-10,this.year-9,this.year-8,this.year-7,this.year-6,this.year-5,this.year-4,this.year-3,this.year-2,this.year-1,this.year,this.year+1,this.year+2,this.year+3,this.year+4,this.year+4,this.year+5,this.year+6,this.year+7,this.year+8,this.year+9],
       months:[1,2,3,4,5,6,7,8,9,10,11,12],
       days:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
-      time:[2020,11,23]
+      time:[this.year,this.month,this.day]
+    }
+  },
+  props:{
+    year:{
+      type:Number,
+      default:new Date().getFullYear()
+    },
+    month:{
+      type:Number,
+      default:new Date().getMonth()+1
+    },
+    day:{
+      type:Number,
+      default:new Date().getDate()
     }
   },
   components:{
@@ -40,6 +54,7 @@ export default {
 
   mounted(){
     this.initPiker()
+    this.calendarInit()
     
   },
   methods:{
@@ -69,6 +84,7 @@ export default {
       if(index!=2){
         this.calendarInit()
       }
+      this.$emit("changeTime",this.time)
       
     },
     calendarInit(){

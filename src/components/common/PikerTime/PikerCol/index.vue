@@ -45,7 +45,7 @@ export default {
     methods:{
         initCol(){
             this.rowHeight = this.$attrs.rowHeight
-            this.rowHeight_mid = this.$attrs.rowHeight/2
+            this.rowHeight_mid = this.$attrs.rowHeight/3
             this.rows_mid = parseInt(this.$attrs.rows/2)
             this.currentIndex = this.colList.indexOf(this.value)
         },
@@ -56,11 +56,12 @@ export default {
             this.endY = e.changedTouches[0].clientY
             let distance = this.endY - this.startY
             if(Math.abs(distance)>this.rowHeight_mid){
-                let realIndex = this.currentIndex-parseInt(distance/this.rowHeight)
+                // *2是为了加长滚动距离
+                let realIndex = this.currentIndex-(parseInt(distance/this.rowHeight)*3)
                 if(realIndex>this.colList.length-1){
                     this.currentIndex = this.colList.length-1
                 }else if(realIndex>=0){
-                    this.currentIndex  -= parseInt(distance/this.rowHeight)
+                    this.currentIndex  -= (parseInt(distance/this.rowHeight))
                 }
                 else{
                     this.currentIndex = 0
@@ -91,6 +92,9 @@ export default {
 </script>
 
 <style scoped="scoped">
+.col_ul{
+    /* transition: 1s all; */
+}
 .col_ul>li{
     font-size: 12px;
 

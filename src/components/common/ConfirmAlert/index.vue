@@ -33,18 +33,21 @@ export default {
     },
     methods:{
       confirm(){
-          this.show = true
-         return new Promise((resolve,reject)=>{
+        this.$common.stopScroll()
+        this.show = true
+        return new Promise((resolve,reject)=>{
           this.promi = {resolve,reject}
         })
       },
       yes(){
-       this.promi.resolve()
-       this.remove()
+        this.$common.openScroll()
+        this.promi.resolve()
+        this.remove()
       },
       no(){
-        this.promi.reject()
-        this.remove()
+          this.$common.openScroll()
+          this.promi.reject()
+          this.remove()
       }
     }
 }

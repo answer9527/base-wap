@@ -25,6 +25,13 @@ class LetterModel{
             url:"/letter/myletter/detail/"+data.id
         })
     }
+
+    // 删除我的某封信件
+    static async deleteMyLetter(data){
+        return await Http.request({
+            url:"/letter/myletter/del/"+data.id
+        })
+    }
 }
 export {
     LetterModel

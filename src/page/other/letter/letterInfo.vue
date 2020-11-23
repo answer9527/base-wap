@@ -10,6 +10,9 @@
               <div class="create_time"  >
                   {{$common.formatTime(letter.createTime,"-",1)}}
               </div>
+              <div class="delete_block">
+                <span class="delete_btn" @click="del_letter">删除</span>
+              </div>
           </div>
           <div class="sub_box"  >
               <div class="sub_box_in"  >
@@ -51,6 +54,16 @@ export default {
     get_letter_info(){
       LetterModel.getMyLetterDetail({id:this.letter_id}).then(res=>{
         this.letter = res.data
+      })
+    },
+    del_letter(){
+      this.$confirmAlert("确认删除该信件？").then(()=>{
+         LetterModel.deleteMyLetter({id:this.letter_id}).then(res=>{
+             this.$alert().success(res.message)
+             this.$router.replace("/other/letter/list")
+         })
+      }).catch(()=>{
+        this.$alert("取消删除")
       })
     }
 
@@ -96,6 +109,17 @@ export default {
 
 }
 .userInfo_row>div{
+  font-size: 0.24rem;
+}
+.userInfo_row>.delete_block{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.userInfo_row>.delete_block>.delete_btn{
+  color: #F4516C;
   font-size: 0.24rem;
 }
 .user_name{

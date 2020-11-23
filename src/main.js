@@ -102,6 +102,8 @@ axios.interceptors.response.use(function (response) {
   }
   return Promise.reject(error);
 });
+
+// 路由导航守卫
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

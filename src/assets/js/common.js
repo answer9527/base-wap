@@ -33,9 +33,9 @@ const formatTime=function(time_str,str="-",type=1){
 //   禁止body滚动  针对遮罩层弹出 禁止body可以滚动问题解决方案
   const stopScroll=function(){
     document.documentElement.style.overflow="hidden";
-    document.body.style.position="fixed";
-    document.body.style.top="0px";
-    document.body.style.width="100%";
+    // document.body.style.position="fixed";
+    // document.body.style.top="0px";
+    // document.body.style.width="100%";
   }
 //   开启body滚动
   const openScroll= function(){

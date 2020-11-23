@@ -30,18 +30,22 @@ export default {
     },
     methods:{
        show(){
+           this.$common.stopScroll()
            this.isShow = true
        },
        hide(){
+           this.$common.openScroll()
            this.isShow = false
         //    this.remove()
        },
        confirm_sheet(item){
+           
            let params = {
                ...item,"type":this.propData.type
            }
            this.$emit("confirm_sheet",params)
            this.isShow = false
+           this.$common.openScroll()
        }
     }
 }
