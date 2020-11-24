@@ -41,7 +41,7 @@
                     </div>                     
                 </div>
                 <div class="form_row">
-                    <img class="" src="../../../assets/images/time_icon.png"/>
+                    <img class="" src="../../../assets/images/type_icon.png"/>
                     <div class="form_title">信件类型</div>    
                     <div  class="placeholder date" @click="openSheet">
                         {{post_type.label}}

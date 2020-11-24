@@ -1,6 +1,7 @@
 import config from "../config/config"
 import axios from "axios"
 axios.defaults.baseURL=config.base_url
+axios.defaults.timeout = 3000
 class Http{
     static async request({url,data={},method="GET"}){
         if(method=="POST"){

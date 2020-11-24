@@ -1,5 +1,6 @@
 <template>
-  <div class="letter-card">
+  <div class="letter-card" v-if="not_del">
+    <span class="del_btn" @click="del_letter">×</span>
     <div class="letter_title">
         {{letter.title}}
     </div>
@@ -13,18 +14,17 @@
     <router-link :to="'/other/letter/detail/'+letter.id" tag="div" class="detail_btn">
         查看详情
     </router-link>
-             <!-- <navigator url="/pages/letterDetail/index"  class="detail_btn">
-                 查看详情
-             </navigator> -->        
+
   </div>
 </template>
 
 <script>
+import {LetterModel} from "@/model/letter.js"
 export default {
     name:"letterOne",
     data(){
         return{
-
+            not_del:true
         }
     },
     props:{
@@ -33,7 +33,16 @@ export default {
         }
     },
     methods:{
-
+        del_letter(){
+            this.$confirmAlert("确认删除该信件？").then(()=>{
+                LetterModel.deleteMyLetter({id:this.letter.id}).then(res=>{
+                    this.$alert().success(res.message)
+                    this.not_del = false
+                })
+            }).catch(()=>{
+                this.$alert("取消删除")
+            })
+        }
     },
     filters:{
         formatOver(plan_time_str){
@@ -69,6 +78,11 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.letter-card>.del_btn{
+    position: absolute;
+    right: 0.2rem;
+    top: 0.1rem;
 }
 .letter-card>.letter_title{
     font-weight: bold;

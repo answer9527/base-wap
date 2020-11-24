@@ -96,7 +96,7 @@ export default {
     /* transition: 1s all; */
 }
 .col_ul>li{
-    font-size: 12px;
+    font-size: 14px;
 
     display: flex;
     flex-direction: row;
