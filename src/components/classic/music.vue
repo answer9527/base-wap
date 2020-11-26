@@ -81,6 +81,7 @@ export default {
     height: 4.2rem;
     border-radius: 50%;
     margin: 0 auto;
+      flex-shrink: 0;
 }
 .music_btn{
     position: absolute;

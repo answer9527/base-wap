@@ -33,6 +33,7 @@ export default {
     height: 1rem;
     background-repeat: no-repeat;
     border-radius: 0.1rem;
+      flex-shrink: 0;
 }
 .one_right{
     padding: 0 0.3rem;

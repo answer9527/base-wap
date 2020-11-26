@@ -32,6 +32,7 @@ const mutations ={
     },
     // 缓存token
     SET_TOKEN(state,token){
+        console.log(111)
         state.token = token
         sessionStorage.setItem("token",token)
     },

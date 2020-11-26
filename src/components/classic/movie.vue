@@ -30,6 +30,7 @@ export default {
 .classic_image{
   width: 100%;
   height: 5rem;
+    flex-shrink: 0;
   /* background-repeat: no-repeat; */
 }
 .classic_icon{

@@ -191,6 +191,7 @@ export default {
 .classic_image{
   height: 4.6rem;
   width: 100%;
+  flex-shrink: 0;
 }
 .detail_box{
   position: relative;
