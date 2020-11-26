@@ -8,6 +8,8 @@ import store from "./vuex/store"
 // 公共的css
 import "./assets/css/common.css"
 
+import {Token} from "./utils/token"
+
 // 公用的方法、过滤器等
 import common from "./assets/js/common"
 Vue.use(common)
@@ -77,7 +79,7 @@ axios.interceptors.request.use(
     if (token) {
       config.headers.common["Authorization"] = "Bearer "+token;
     }else{
-      config.headers.common["Authorization"] ="";
+      config.headers.common["Authorization"] = "";
     }
     return config;
   },
@@ -86,13 +88,16 @@ axios.interceptors.request.use(
   }
 );
 
-// 响应拦截器
+// // 响应拦截器
 axios.interceptors.response.use(function (response) {
   return response;
-}, function (error) {
+},async function (error) {
   let code = error.response.data.code
-
+  let config = error.config
   // 4000开头的为token异常
+  console.log(config)
+  let res = await Token.getToken()
+  console.log(res.data)
   let re =/^4000/
   if(re.test(code)){
     Vue.prototype.$alert().error(error.response.data.message)
