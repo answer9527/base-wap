@@ -8,7 +8,7 @@
           <div class="userInfo_row"  >
               <div class="user_name">{{letter.userName}}</div>
               <div class="create_time"  >
-                  {{$common.formatTime(letter.createTime,"-",1)}}
+                {{$common.formatTime(letter.createTime,"-",1)}}
               </div>
               <div class="delete_block">
                 <span class="delete_btn" @click="del_letter">删除</span>
@@ -59,8 +59,8 @@ export default {
     del_letter(){
       this.$confirmAlert("确认删除该信件？").then(()=>{
          LetterModel.deleteMyLetter({id:this.letter_id}).then(res=>{
-             this.$alert().success(res.message)
-             this.$router.replace("/other/letter/list")
+            this.$alert().success(res.message)
+            this.$router.replace("/other/letter/list")
          })
       }).catch(()=>{
         this.$alert("取消删除")
