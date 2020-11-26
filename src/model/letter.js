@@ -9,14 +9,14 @@ class LetterModel{
         return await Http.request({
             url:"/letter/insert",
             data,
-            method:"POST"
+            method:"post"
         })
     }
     static async getMyLetterList(data){
         return await Http.request({
             url:"/letter/myletter/list",
             data,
-            method:"POST"
+            method:"post"
         })
     }
     // 获取我的某封信详情

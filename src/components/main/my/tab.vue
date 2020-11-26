@@ -40,6 +40,7 @@ export default {
     height: 0.6rem;
     background-position: center;
     background-size: contain;
+    background-repeat: no-repeat;
 }
 .tab_box>.count{
   position: absolute;

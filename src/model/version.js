@@ -8,7 +8,7 @@ class VersionModel{
     static async getLatestVersion(){
         return await Http.request({
             url:"/version/latest",
-            method:"POST"
+            method:"post"
         })
     }
 }

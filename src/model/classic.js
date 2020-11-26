@@ -37,7 +37,7 @@ class ClassicModel{
     return await Http.request({
       url:"/classic/getByType",
       data,
-      method:"POST"
+      method:"post"
     })
   }
 
@@ -53,7 +53,7 @@ class ClassicModel{
     return await Http.request({
       url:"/classic/getMyLike",
       data,
-      method:"POST"
+      method:"post"
     })
   }
 }

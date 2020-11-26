@@ -41,6 +41,9 @@ export default {
     created(){
         // 清除登录态
         this.del_token_userinfo()
+        // 清除首页 classic情况
+        this.reset_classic_about()
+        sessionStorage.removeItem("loginParams")
     },
     beforeRouteEnter(to, from, next){
         next(vm=>{
@@ -65,7 +68,9 @@ export default {
                 this.set_uid(uid)
                 // 保存用户信息
                 this.set_userinfo(result.userInfo)
-                this.reset_classic_about()
+                // 缓存用户登录参数,用户无痛刷新 token
+                sessionStorage.setItem("loginParams",JSON.stringify(params))
+                
                 if(this.before_route=="/register"){
 
                     // 如果是从register跳进来的,则从浏览器的history跳回上一个

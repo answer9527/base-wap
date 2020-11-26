@@ -32,7 +32,6 @@ const mutations ={
     },
     // 缓存token
     SET_TOKEN(state,token){
-        console.log(111)
         state.token = token
         sessionStorage.setItem("token",token)
     },
@@ -41,6 +40,7 @@ const mutations ={
         state.uid = uid
         sessionStorage.setItem("uid",uid)
     },
+    // 缓存用户信息
     SET_USERINFO(state,userInfo){
         state.userInfo = userInfo
         sessionStorage.setItem("userInfo",JSON.stringify(userInfo))

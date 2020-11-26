@@ -4,14 +4,14 @@ class SuggestModel{
         return await Http.request({
             url:"/suggest/all",
             data,
-            method:"POST"
+            method:"post"
         })
     }
     static async insert(data){
         return await Http.request({
             url:"/suggest/insert",
             data:data,
-            method:"POST"
+            method:"post"
         })
     }
 }

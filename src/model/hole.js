@@ -4,21 +4,21 @@ class HoleModel{
         return await Http.request({
             url:"/hole/rand",
             data,
-            method:"POST"
+            method:"post"
         })
     }
     static async get_my_hole(data){
         return await Http.request({
             url:"/hole/myhole",
             data,
-            method:"POST"
+            method:"post"
         })
     }
     static async insert_hole(data){
         return Http.request({
             url:"/hole/insert",
             data,
-            method:"POST"
+            method:"post"
         })
     }
     static async get_by_id(id){
@@ -31,7 +31,7 @@ class HoleModel{
         return await Http.request({
             url:"/hole/comment/selectByHid",
             data,
-            method:"POST"
+            method:"post"
         })
     }
     // 评论树洞
@@ -39,7 +39,7 @@ class HoleModel{
         return await Http.request({
             url:"/hole/comment/insert",
             data,
-            method:"POST"
+            method:"post"
         })
     }
     // 删除树洞

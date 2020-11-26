@@ -6,7 +6,7 @@ class UserModel{
     return await Http.request({
       url:"/user/registerToken",
       data:data,
-      method:"POST"
+      method:"post"
     })
   }
 
@@ -22,7 +22,7 @@ class UserModel{
     return await Http.request({
       url:"/user/pwdToken",
       data,
-      method:"POST"
+      method:"post"
     })
   }
 
@@ -31,7 +31,7 @@ class UserModel{
     return await Http.request({
       url:"/user/register",
       data,
-      method:"POST"
+      method:"post"
     })
   }
 
@@ -40,7 +40,7 @@ class UserModel{
     return await Http.request({
       url:"/user/update/self",
       data,
-      method:"POST"
+      method:"post"
     })
   }
 }

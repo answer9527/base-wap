@@ -5,14 +5,14 @@ class MsgModel{
         return await Http.request({
             url:"/comment/msg/classic/mylist",
             data,
-            method:"POST"
+            method:"post"
         })
     }
     static async getHoleCommentMsg(data){
         return await Http.request({
             url:"/comment/msg/hole/mylist",
             data,
-            method:"POST"
+            method:"post"
         })
     }
     static async getMyMsgCountTotal(){

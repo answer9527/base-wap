@@ -92,19 +92,41 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(function (response) {
   return response;
 },async function (error) {
-  let code = error.response.data.code
-  let config = error.config
-  // 4000开头的为token异常
-  console.log(config)
-  let res = await Token.getToken()
-  console.log(res.data)
-  let re =/^4000/
-  if(re.test(code)){
-    Vue.prototype.$alert().error(error.response.data.message)
-    router.push({path:"/login",replace:true})
-  }else if(code!=0){
-    Vue.prototype.$alert().error(error.response.data.message)
+  if(error.message.includes('timeout')){
+    Vue.prototype.$alert().error("响应超时！")
+  }else{
+    let code = error.response.data.code
+    // axios返回的 报错请求参数情况
+    let config = error.config
+    // 4000开头的为token异常
+    let re =/^4000/
+    if(re.test(code)){
+      // 
+      if(code==40006){
+        //  40006 token过期
+        await Token.getToken()
+        let _again_res = await Token._againRequest(config.url,config.data,config.method)
+        return {
+          data:_again_res
+        }
+  
+      }else if(code==400010){
+        // 400010  暂无权限
+        Vue.prototype.$alert().error(error.response.data.message)
+      
+      }else{
+        // 其他权限  出错跳转登录
+        Vue.prototype.$alert().error(error.response.data.message)
+        router.push({path:"/login",replace:true})
+       
+      }
+  
+      // 
+    }else if(code!=0){
+      Vue.prototype.$alert().error(error.response.data.message)
+    }
   }
+
   return Promise.reject(error);
 });
 

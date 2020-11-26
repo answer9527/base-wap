@@ -5,14 +5,14 @@ class CommentModel{
         return await Http.request({
             url:"/comment/selectByCid",
             data,
-            method:"POST"
+            method:"post"
         })
     }   
     static async insertComment(data){
         return await Http.request({
             url:"/comment/insert",
             data,
-            method:"POST"
+            method:"post"
         })
     }
     static async delComment(data){

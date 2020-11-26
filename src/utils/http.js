@@ -3,15 +3,16 @@ import axios from "axios"
 axios.defaults.baseURL=config.base_url
 axios.defaults.timeout = 3000
 class Http{
-    static async request({url,data={},method="GET"}){
+    static async request({url,data={},method="get"}){
         let res;
-        if(method=="POST"){
+        if(method=="post"){
             res = await axios.post(url,data)
            
         }else{
             res = await axios.get(url,{params:data})
            
         }
+     
         return res.data
     }
 
