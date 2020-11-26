@@ -30,6 +30,23 @@ const formatTime=function(time_str,str="-",type=1){
   const add0=function(m){
     return m<10?'0'+m:m 
   }
+
+  var formatLetterType = function(type){
+    var typeName;
+    switch (type) {
+        case 2:
+            typeName = "手抄信件"
+            break;
+        case 3:
+            typeName = "语音信件"
+            break;
+        default:
+            typeName = "普通信件"
+            break;
+    }
+    return typeName
+  }
+
 //   禁止body滚动  针对遮罩层弹出 禁止body可以滚动问题解决方案
   const stopScroll=function(){
     document.documentElement.style.overflow="hidden";
@@ -48,7 +65,7 @@ const formatTime=function(time_str,str="-",type=1){
 export default{
     install(){
         Vue.prototype.$common ={
-            formatTime,stopScroll,openScroll
+            formatTime,stopScroll,openScroll,formatLetterType
         }
     }
 }

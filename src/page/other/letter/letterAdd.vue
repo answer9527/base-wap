@@ -25,7 +25,7 @@
         </div>
         <div class="block_content">
             <div class="content_intro" >
-                请留下您的接受信件的电子邮箱以及接受信件的日期。届时系统将会自动投递信件至您的邮箱。
+                请务必确认邮箱填写正确，届时系统将会自动投递信件至您的邮箱。(温馨提示:手抄信件在邮寄信件时将会由管理员手抄一份信件发送至您的邮箱，语音信件同理。不想让管理员看到信件内容请务必选择普通信件。)
             </div>
             <div style="padding:20rpx 0">
                 <div class="form_row">
@@ -169,7 +169,7 @@ export default {
     padding: 0.2rem 0;
 }
 .content_intro{
-    font-size: 0.28rem;
+    font-size: 0.24rem;
 }
 .form_row{
     display: flex;

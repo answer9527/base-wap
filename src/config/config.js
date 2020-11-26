@@ -20,4 +20,4 @@ const apk = {
     base_url:"https://story.chenlake.com/mina/v1"
 }
 
-export default prod
+export default apk

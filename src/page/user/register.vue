@@ -64,7 +64,7 @@ export default {
             }
             UserModel.register(params).then(res=>{
                 this.$alert().success(res.message)
-                this.$router.push("/login")
+                this.$router.replace("/login")
             })
         },
     }
