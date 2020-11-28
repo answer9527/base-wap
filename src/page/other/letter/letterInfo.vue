@@ -4,6 +4,14 @@
           <img src="../../../assets/images/future.png" class="top_img" />
       </div>
       <div class="detail_box"  >
+          <div class="sub_box"  >
+            <div class="sub_box_in"  >
+                <div class="sub_title"  >
+                    给自己的信
+                </div>
+                <div class="line"></div>
+            </div>
+          </div>
           <div class="title">{{letter.title}}</div>
           <div class="userInfo_row"  >
               <div class="user_name">{{letter.userName}}</div>
@@ -14,16 +22,25 @@
                 <span class="type_tag">{{$common.formatLetterType(letter.type)}}</span>
               </div>
           </div>
-          <div class="sub_box"  >
+
+          <div class="letter_content">
+            {{letter.content}}
+          </div>
+          <div class="end_row">
+            <div class="end_line"></div>
+            <div>END</div>
+            <div class="end_line"></div>
+          </div>
+          <div v-if="letter.image" class="image_box">
+            <div class="sub_box"  >
               <div class="sub_box_in"  >
                   <div class="sub_title"  >
-                      给自己的信
+                      手抄版
                   </div>
                   <div class="line"></div>
               </div>
-          </div>
-          <div class="letter_content"  >
-            {{letter.content}}
+            </div>
+            <img :src="letter.image" style="width:100%"/>
           </div>
         
           <div class="post_time"  >
@@ -98,6 +115,10 @@ export default {
     border-bottom: 0.02rem dashed #383838;
     width: 100%;
     box-sizing: border-box;
+    text-align: center;
+}
+.detail_box>.image_box{
+    padding: 0.4rem 0;
 }
 .userInfo_row{
     display: flex;
@@ -160,6 +181,22 @@ export default {
 .letter_content{
     padding: 0.3rem 0;
     text-indent: 0.56rem;
+}
+
+.end_row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.8rem 0;
+}
+.end_row>.end_line{
+    width: 2rem;
+    height: 0.02rem;
+    background: #c2c2c2;
+}
+.end_row>div:nth-child(2){
+    color:#c2c2c2 ;
+    padding: 0 0.4rem;
 }
 /* .userInfo_row>.user_avatar{
     width: 80rpx;
