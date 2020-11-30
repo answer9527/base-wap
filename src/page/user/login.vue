@@ -113,10 +113,12 @@ export default {
 }
 .logo{
     display: inline-block;
-    width: 1.4rem;
+    width: 2.8rem;
     height: 1.4rem;
-    background: url(../../assets/images/logo.png);
-    background-size: cover;
+    background: url(../../assets/images/logo-header.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     /* border-radius: 50%; */
 }
 .sys-name{
